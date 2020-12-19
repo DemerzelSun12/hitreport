@@ -112,7 +112,8 @@
 \RequirePackage{cite}
 % 插入代码
 \RequirePackage{listings}
-\lstset{numbers=left, %设置行号位置
+\lstset{
+	numbers=left, %设置行号位置
 	numberstyle=\tiny, %设置行号大小
 	keywordstyle=\color{blue}, %设置关键字颜色
 	commentstyle=\color[cmyk]{1,0,1,0}, %设置注释颜色
@@ -120,37 +121,26 @@
 	escapeinside=``, %逃逸字符(1左面的键)，用于显示中文
 	breaklines, %自动折行
 	extendedchars=false, %解决代码跨页时，章节标题，页眉等汉字不显示的问题
-	xleftmargin=2em,xrightmargin=2em, aboveskip=1em, %设置边距
+	xleftmargin=2em,
+	xrightmargin=2em,
+	aboveskip=1em, %设置边距
 	tabsize=4, %设置tab空格数
-	showspaces=false %不显示空格
+	showspaces=false, %不显示空格
+ 	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	framerule=1pt,
+	rulecolor=\color{gray!35},
+	backgroundcolor=\color{gray!5},
+	basicstyle={\small\ttfamily},
+	stringstyle=\color{mauve},
+	breakatwhitespace=true
 }
-
-
-
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
 
-\lstset{
-  frame=tb,
-  aboveskip=3mm,
-  belowskip=3mm,
-  showstringspaces=false,
-  columns=flexible,
-  framerule=1pt,
-  rulecolor=\color{gray!35},
-  backgroundcolor=\color{gray!5},
-  basicstyle={\small\ttfamily},
-  numbers=none,
-  numberstyle=\tiny\color{gray},
-  keywordstyle=\color{blue},
-  commentstyle=\color{dkgreen},
-  stringstyle=\color{mauve},
-  breaklines=true,
-  breakatwhitespace=true,
-  tabsize=3,
-}
 % 首行缩进
 \RequirePackage{indentfirst}
 % 设置浮动体的标题
