@@ -1,87 +1,43 @@
 % !TeX program = xelatex 
 \documentclass{hitreport}
-\usepackage{url}
-\usepackage{algorithm,float}  
-\usepackage{algpseudocode}  
-\usepackage{amsmath}
-\usepackage{cite}
-\usepackage{threeparttable}
-\usepackage{subfig}
-\usepackage{listings} %插入代码
-\usepackage{xcolor} %代码高亮
-\usepackage{tikz}
-\usepackage{hyperref}
-\usepackage{wasysym}
-\usepackage{pgfplots}
 
-
-
-\lstset{numbers=left, %设置行号位置
-	numberstyle=\tiny, %设置行号大小
-	keywordstyle=\color{blue}, %设置关键字颜色
-	commentstyle=\color[cmyk]{1,0,1,0}, %设置注释颜色
-	frame=single, %设置边框格式
-	escapeinside=``, %逃逸字符(1左面的键)，用于显示中文
-	breaklines, %自动折行
-	extendedchars=false, %解决代码跨页时，章节标题，页眉等汉字不显示的问题
-	xleftmargin=2em,xrightmargin=2em, aboveskip=1em, %设置边距
-	tabsize=4, %设置tab空格数
-	showspaces=false %不显示空格
-}
-
-\renewcommand{\algorithmicrequire}{\textbf{Input:}}  % Use Input in the format of Algorithm  
-\renewcommand{\algorithmicensure}{\textbf{Output:}} % Use Output in the format of Algorithm  
-
-\makeatletter
-\newenvironment{breakablealgorithm}
-  {% \begin{breakablealgorithm}
-   \begin{center}
-     \refstepcounter{algorithm}% New algorithm
-     \hrule height.8pt depth0pt \kern2pt% \@fs@pre for \@fs@ruled
-     \renewcommand{\caption}[2][\relax]{% Make a new \caption
-       {\raggedright\textbf{\ALG@name~\thealgorithm} ##2\par}%
-       \ifx\relax##1\relax % #1 is \relax
-         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##2}%
-       \else % #1 is not \relax
-         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##1}%
-       \fi
-       \kern2pt\hrule\kern2pt
-     }
-  }{% \end{breakablealgorithm}
-     \kern2pt\hrule\relax% \@fs@post for \@fs@ruled
-   \end{center}
-  }
-\makeatother
+% 此处添加自己需要的package
+% \usepackage{package}
 
 % =============================================
-% Part 0 Edit the info
+% Part 0 封面基本信息
 % =============================================
 
-\major{计算机科学与技术}
-\name{孙骁}
-\title{视听觉信号处理\\实验报告}
-\stuid{1180300811} % 学号
-\college{计算学部}
-\date{2020年11月11日}
-\lab{} %实验地点
-\course{视听觉信号处理}
-\instructor{姚鸿勋}
-% \grades{}
-\expname{实验二} %实验名称
-% \exptype{} % 实验类型
-% \partner{} % 同组学生名字
-\term{2020秋季学期}
+\title{课程\&实验报告} % 题目，可以使用 \\ 命令分行
+\expname{实验一} % 实验题目
+\college{计算学部} % 学院
+\major{计算机科学与技术} % 专业
+\classnum{1803105} % 班号
+\stuid{学号} % 学号
+\name{姓名} % 姓名
+\labloc{格物207} % 实验地点
+\instructor{指导教师} % 指导教师
+\term{2020秋季学期} % 学期
+\date{\today} % 实验日期，可以使用文字填写
 
 \begin{document}
 
-\maketitle
-
-\tableofcontents
-\newpage
 % =============================================
 % Part 1 Header
 % =============================================
 
+% 制作封面 
+\maketitle
+% 摘要和关键字，如果不需要摘要，可将\begin{abstract}和\end{abstract}及二者之间内容注释，或去掉
+\begin{abstract}
+hitreport是为哈尔滨工业大学本科生制作的\LaTeX 模板。
+
+\keywords{关键字\quad   \LaTeX \quad  report template}
+\end{abstract}
+
+% 制作目录
+\tableofcontents
+\newpage
 
 
 % =============================================

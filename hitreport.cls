@@ -1,24 +1,24 @@
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{hitreport}
-              [2017/09/16 v2.6 Standard LaTeX Template for CUMC]
+              [2020/12/31 v1.1 Standard LaTeX Template for hitreport]
 %% Inital Code
 \newif\if@hitreport@preface\@hitreport@prefacetrue
 % tokens definition
-%%%% 承诺书
 % 信息
 \newcommand\major[1]{\def\@major{#1}}
 \newcommand\name[1]{\def\@name{#1}}
 \newcommand\stuid[1]{\def\@stuid{#1}}
+\newcommand\classnum[1]{\def\@classnum{#1}}
 \newcommand\college[1]{\def\@college{#1}}
 \renewcommand\date[1]{\def\@date{#1}}
-\newcommand\lab[1]{\def\@lab{#1}}
+\newcommand\labloc[1]{\def\@labloc{#1}}
 \newcommand\course[1]{\def\@course{#1}}
 \newcommand\instructor[1]{\def\@instructor{#1}}
 \newcommand\expname[1]{\def\@expname{#1}}
 \newcommand\term[1]{\def\@term{#1}}
 
-%%%% 编号专用页
-% 没有
+\newcommand\hitreport@tokens@keywords{}
+
 %% Declaration of Options
 \DeclareOption{colorprint}{\@hitreport@bwprintfalse}
 \DeclareOption{bwprint}{\@hitreport@bwprinttrue}
@@ -33,8 +33,7 @@
 \RequirePackage{ifxetex}
 \RequireXeTeX
 \ifxetex\else
-\ClassError{hitreportthesis}{You must use the `xelatex' driver\MessageBreak Please choose `xelatex'}{%
-Just choose `xelatex', no `pdflatex' or `latex' and so on.}
+\ClassError{hitreport}{You must use the `xelatex' driver\MessageBreak Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \fi
 % 支持中文的 ctex 宏包
 \RequirePackage{ctex}
@@ -47,10 +46,20 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \RequirePackage{amssymb}
 \RequirePackage{bm}
 \RequirePackage{titletoc}
+%% 画直立的积分号专用
+\RequirePackage{wasysym}
+% 支持tikz画图
+\RequirePackage{tikz}
+% 支持pgfplots画图
+\RequirePackage{pgfplots}
 % 设置颜色
 \RequirePackage{xcolor}
 % 插入图片
 \RequirePackage{graphicx}
+%% 支持图片套图片，即图片的子图片
+\RequirePackage{subfig}
+% 支持文章内部交叉引用
+\RequirePackage{hyperref}
 % 表格
 \RequirePackage{array}
 %% 长表格
@@ -59,6 +68,8 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \RequirePackage{booktabs}
 %% multirow 支持在表格中跨行
 \RequirePackage{multirow}
+%% 支持表格过长跨页显示
+\RequirePackage{threeparttable}
 %% 调整间隔, 让表格更好看些
 \RequirePackage{bigstrut}
 %% 在跨行表格中输入定界符
@@ -67,16 +78,53 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \RequirePackage{cprotect}
 % 设置代码环境
 \RequirePackage{listings}
+%% 支持代码根据语言类型高亮
 \RequirePackage{xcolor}
+% 支持文献引用超链接
+\RequirePackage{url}
+% 支持插入algorithm伪代码
+\RequirePackage{algorithm,float}
+\RequirePackage{algpseudocode}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}  % Use Input in the format of Algorithm  
+\renewcommand{\algorithmicensure}{\textbf{Output:}} % Use Output in the format of Algorithm 
+%% 允许算法伪代码跨页显示
+\newenvironment{breakablealgorithm}
+  {% \begin{breakablealgorithm}
+   \begin{center}
+     \refstepcounter{algorithm}% New algorithm
+     \hrule height.8pt depth0pt \kern2pt% \@fs@pre for \@fs@ruled
+     \renewcommand{\caption}[2][\relax]{% Make a new \caption
+       {\raggedright\textbf{\ALG@name~\thealgorithm} ##2\par}%
+       \ifx\relax##1\relax % #1 is \relax
+         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##2}%
+       \else % #1 is not \relax
+         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##1}%
+       \fi
+       \kern2pt\hrule\kern2pt
+     }
+  }{% \end{breakablealgorithm}
+     \kern2pt\hrule\relax% \@fs@post for \@fs@ruled
+   \end{center}
+  }
 
-\RequirePackage[titles]{tocloft}
-\renewcommand{\cftdot}{$\cdot$}
-\renewcommand{\cftsecdotsep}{1.5} 
-\setlength{\cftbeforesecskip}{7pt}
-\setlength{\cftbeforesubsecskip}{3pt}
-\renewcommand{\cftsecfont}{\bfseries\zihao{-4}\heiti}
-\renewcommand{\cftsecleader}{\cftdotfill{\cftsecdotsep}}
-\renewcommand{\cftsecaftersnumb}{\hskip.4em}
+
+% 支持引用参考文献格式
+\RequirePackage{cite}
+% 插入代码
+\RequirePackage{listings}
+\lstset{numbers=left, %设置行号位置
+	numberstyle=\tiny, %设置行号大小
+	keywordstyle=\color{blue}, %设置关键字颜色
+	commentstyle=\color[cmyk]{1,0,1,0}, %设置注释颜色
+	frame=single, %设置边框格式
+	escapeinside=``, %逃逸字符(1左面的键)，用于显示中文
+	breaklines, %自动折行
+	extendedchars=false, %解决代码跨页时，章节标题，页眉等汉字不显示的问题
+	xleftmargin=2em,xrightmargin=2em, aboveskip=1em, %设置边距
+	tabsize=4, %设置tab空格数
+	showspaces=false %不显示空格
+}
+
 
 
 
@@ -113,18 +161,16 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \RequirePackage{ulem}
 % 尺寸计算
 \RequirePackage{calc}
-
+% 支持插入附录
 \RequirePackage[titletoc,title]{appendix}
 
-%\RequirePackage[title,toc,titletoc]{appendix}
 
 \RequirePackage{etoolbox}
 \AtBeginEnvironment{thebibliography}{%
     \phantomsection
     \addcontentsline{toc}{section}{\refname}
     }
-% 超链接 hyperref 的设置
-\RequirePackage{hyperref}
+
 %% Document Layout
 % 页面布局
 \geometry{top=25mm,bottom=25mm,left=25mm,right=25mm}
@@ -218,17 +264,17 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 }
 
 % 超链接
-	 \hypersetup{%
-         xetex,
-		% unicode=false, % hyperref 和 xetex 同时使用时不能开启 Unicode 选项.
-         pdfstartview=FitH,
-         CJKbookmarks=true,
-         bookmarksnumbered=true,
-         bookmarksopen=true,
-         colorlinks, %注释掉此项则交叉引用为彩色边框(将colorlinks和pdfborder同时注释掉)
-         pdfborder=001,   %注释掉此项则交叉引用为彩色边框
-		 allcolors=black,
-		 breaklinks=true}%
+\hypersetup{%
+     xetex,
+	 % unicode=false, % hyperref 和 xetex 同时使用时不能开启 Unicode 选项.
+     pdfstartview=FitH,
+     CJKbookmarks=true,
+     bookmarksnumbered=true,
+     bookmarksopen=true,
+     colorlinks, % 注释掉此项则交叉引用为彩色边框(将colorlinks和pdfborder同时注释掉)
+     pdfborder=001,   %注释掉此项则交叉引用为彩色边框
+	 allcolors=black,
+	 breaklinks=true}%
 % \if@hitreport@bwprint
 % \AtBeginDocument{\hypersetup{hidelinks}}
 % \else\relax\fi
@@ -280,17 +326,6 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
       \newpage
       \@maketitle
     \endgroup
-%  \global\let\thanks\relax
-%  \global\let\maketitle\relax
-%  \global\let\@maketitle\relax
-%  \global\let\@thanks\@empty
-%  \global\let\@author\@empty
-%  \global\let\@date\@empty
-%  \global\let\@title\@empty
-%  \global\let\title\relax
-%  \global\let\author\relax
-%  \global\let\date\relax
-%  \global\let\and\relax
 }
 
 \def\@maketitle{%
@@ -298,8 +333,8 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
   \if@hitreport@preface
   \null
 	\begin{center}
-	  		\begin{center}
-	  		\begin{figure}[t]
+	  	\begin{figure}[t]
+	  		\centering
 	  		\begin{center}
 	  			\parbox[b]{2cm}{
 	  				\includegraphics[scale=0.22]{HIT.jpg} % 校徽图片
@@ -313,14 +348,9 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 	  				\end{center}
 	  			}
 	  		\end{center}
-	  		\end{figure}
-	    	\end{center}
-	
-	
+	  	\end{figure}
 	    
-	    \begin{center}
-	        \vspace{5pt}
-	    \end{center}
+	    \vspace{5pt}
 	    
 	    \bfseries{\huawenxingkai \fontsize{42}{0} \selectfont \@title}\\
 	    
@@ -333,11 +363,12 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 	      \centering
 	      \renewcommand\arraystretch{1.6}
 	      \begin{tabular}{lc}
-	      {}{课程名称：} & {}\@course     \\ \cline{2-2} 
 	      {}{学院：}   & {}\@college    \\ \cline{2-2} 
 	      {}{专业：}   & {}\@major      \\ \cline{2-2} 
+	      {}{班级：}   & {}\@classnum    \\ \cline{2-2}
 	      {}{学号：}   & {}\@stuid      \\ \cline{2-2} 
 	      {}{姓名：}   & {}\@name       \\ \cline{2-2} 
+	      {}{实验地点：}& {}\@labloc     \\ \cline{2-2}
 	      {}{指导老师：} & {}\@instructor \\ \cline{2-2} 
 	      {}{学期：}   & {}\@term         \\ \cline{2-2}
 	      \end{tabular}
@@ -391,18 +422,19 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Define new environment and command
-%% 摘要两个字设置为 4 号.
+%% 摘要两个字设置为 3 号.
 %% 定义摘要环境
 \renewenvironment{abstract}{%
 \if@twocolumn
 		\section*{\abstractname}%
 	\else
 	 \begin{center}%
-	{\zihao{4}\bfseries \abstractname\vspace{-.5em}\vspace{\z@}}%
+	{\zihao{3}\bfseries \abstractname\vspace{-.5em}\vspace{\z@}}%
 	 \end{center}%
  	 \quotation
 	\fi}
 	{\if@twocolumn\else\endquotation\newpage\null\fi}
+
 \renewenvironment{quotation}
 	{\list{}{\listparindent 2em%
 	 \itemindent \listparindent
