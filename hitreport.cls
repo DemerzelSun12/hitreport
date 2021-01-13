@@ -25,7 +25,6 @@
 \DeclareOption{withoutpreface}{\@hitreport@prefacefalse}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 %% Executing of Options
-%\ExecuteOptions{colorprint}
 \ProcessOptions\relax
 %% Loading Class
 \LoadClass[a4paper,12pt]{article}
