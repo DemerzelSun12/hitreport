@@ -10,6 +10,10 @@ jobs:
         run: sudo apt install -y texlive-base texlive-xetex texlive-lang-chinese latexmk
       - name: Download the fonts
         run: for i in simhei.ttf simkai.ttf simsun.ttc simsunb.ttf simfang.ttf; do wget -P fonts/ https://xugr.keybase.pub/static/fonts/$i; done
+      - name: Download mscorefonts
+        run: sudo apt install ttf-mscorefonts-installer
+      - name: Active the fonts
+        run: sudo fc-cache
       - name: Copy the fonts
         run: mkdir -p ~/.local/share/fonts && cp -r fonts/* ~/.local/share/fonts/
       - name: Download latex science
