@@ -17,4 +17,4 @@ jobs:
       - name: Build font information caches
         run: fc-cache -rv
       - name: Compile LaTeX document
-        run: latexmk -xelatex -interaction=nonstopmode -file-line-error report.tex
+        run: xelatex report.tex
