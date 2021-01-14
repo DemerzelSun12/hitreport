@@ -326,12 +326,12 @@
 	  		\centering
 	  		\begin{center}
 	  			\parbox[b]{2cm}{
-	  				\includegraphics[scale=0.22]{HIT.jpg} % 校徽图片
+	  				\includegraphics[scale=0.22]{photo/HIT.jpg} % 校徽图片
 	  			}
 	  			\parbox[b]{13.5cm}{
 	  				\begin{center}
-	  					\includegraphics[scale=0.75]{hitname.jpg} 
-	  					% 学校名图片，两张图片必须放在与.tex文件同一目录下，名字可以自己相应更改，但必须保持一致
+	  					\includegraphics[scale=0.75]{photo/hitname.jpg} 
+	  					% 学校名图片，两张图片必须放在photo目录下，名字可以更改，但必须引用处保持一致
 	  					
 	  					\large \textbf{Harbin Institute of Technology} 
 	  				\end{center}
