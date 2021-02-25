@@ -1,0 +1,18 @@
+name: Test
+
+on: [push, pull_request]
+
+jobs:
+
+  test:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'ci skip')"
+    container: hitreport/hitreport-test-env
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install required packages
+      run: bash .github/workflows/install-packages.sh
+    - name: Test report
+      run: make report
+    - name: Test doc
+      run: make doc
