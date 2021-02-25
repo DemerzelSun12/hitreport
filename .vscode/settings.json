@@ -1,0 +1,54 @@
+{
+    "latex-workshop.intellisense.package.enabled": true,
+    "latex-workshop.intellisense.unimathsymbols.enabled": true,
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk for hitreport",
+            "tools": [
+                "xetex-hitreport",
+                "latexmk-xelatex"
+            ]
+        },
+        {
+            "name": "make report",
+            "tools": [
+                "make-report"
+            ]
+        }
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "xetex-hitreport",
+            "command": "xetex",
+            "args": [
+                "-file-line-error",
+                "-halt-on-error",
+                "-interaction=nonstopmode",
+                "hitreport.ins"
+            ],
+            "env": {}
+        },
+        {
+            "name": "latexmk-xelatex",
+            "command": "latexmk",
+            "args": [
+                "-xelatex",
+                "-file-line-error",
+                "-halt-on-error",
+                "-interaction=nonstopmode",
+                "-synctex=1",
+                "-pv-",
+                "-pvc-",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "make-report",
+            "command": "make",
+            "args": [],
+            "env": {}
+        }
+    ]
+}

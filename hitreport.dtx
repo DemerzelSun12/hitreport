@@ -1,0 +1,3141 @@
+% \iffalse meta-comment
+%
+% Copyright (C) 2021 by Xiao Sun <demerzelsun@gmail.com>
+%
+% This file may be distributed and/or modified under the conditions of
+% the LaTeX Project Public License, either version 1.3c of this license
+% or (at your option) any later version. The latest version of this 
+% license is in:
+%
+%   http://www.latex-project.org/lppl.txt
+%
+% and version 1.3c or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+%
+% \fi
+%
+% \iffalse
+%<*driver>
+\ProvidesFile{hitreport.dtx}[2021/01/14 1.0.0 Harbin Institute of Technology Report Template]
+\documentclass{ltxdoc}
+\usepackage{dtx-style}
+
+\EnableCrossrefs
+\CodelineIndex
+
+\begin{document}
+    \DocInput{hitreport.dtx}
+\end{document}
+%</driver>
+% \fi
+%
+% \CharacterTable
+%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%   Digits        \0\1\2\3\4\5\6\7\8\9
+%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%   Dollar        \$     Percent       \%     Ampersand     \&
+%   Acute accent  \'     Left paren    \(     Right paren   \)
+%   Asterisk      \*     Plus          \+     Comma         \,
+%   Minus         \-     Point         \.     Solidus       \/
+%   Colon         \:     Semicolon     \;     Less than     \<
+%   Equals        \=     Greater than  \>     Question mark \?
+%   Commercial at \@     Left bracket  \[     Backslash     \\
+%   Right bracket \]     Circumflex    \^     Underscore    \_
+%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%   Right brace   \}     Tilde         \~}
+%
+% \DoNotIndex{\newenvironment,\@bsphack,\@empty,\@esphack,\sfcode}
+% \DoNotIndex{\addtocounter,\label,\let,\linewidth,\newcounter}
+% \DoNotIndex{\noindent,\normalfont,\par,\parskip,\phantomsection}
+% \DoNotIndex{\providecommand,\ProvidesPackage,\refstepcounter}
+% \DoNotIndex{\RequirePackage,\setcounter,\setlength,\string,\strut}
+% \DoNotIndex{\textbackslash,\texttt,\ttfamily,\usepackage}
+% \DoNotIndex{\begin,\end,\begingroup,\endgroup,\par,\\}
+% \DoNotIndex{\if,\ifx,\ifdim,\ifnum,\ifcase,\else,\or,\fi}
+% \DoNotIndex{\let,\def,\xdef,\edef,\newcommand,\renewcommand}
+% \DoNotIndex{\expandafter,\csname,\endcsname,\relax,\protect}
+% \DoNotIndex{\Huge,\huge,\LARGE,\Large,\large,\normalsize}
+% \DoNotIndex{\small,\footnotesize,\scriptsize,\tiny}
+% \DoNotIndex{\normalfont,\bfseries,\slshape,\sffamily,\interlinepenalty}
+% \DoNotIndex{\textbf,\textit,\textsf,\textsc}
+% \DoNotIndex{\hfil,\par,\hskip,\vskip,\vspace,\quad}
+% \DoNotIndex{\centering,\raggedright,\ref}
+% \DoNotIndex{\c@secnumdepth,\@startsection,\@setfontsize}
+% \DoNotIndex{\ ,\@plus,\@minus,\p@,\z@,\@m,\@M,\@ne,\m@ne}
+% \DoNotIndex{\@@par,\DeclareOperation,\RequirePackage,\LoadClass}
+% \DoNotIndex{\AtBeginDocument,\AtEndDocument}
+%
+% \changes{v1.0.0}{2021/01/14}{Initial version}
+%
+% \GetFileInfo{\jobname.dtx}
+%
+% \def\indexname{索引}
+% \def\glossaryname{修改记录}
+% \IndexPrologue{\section{\indexname}}
+% \GlossaryPrologue{\section{\glossaryname}}
+
+% \title{\bfseries\color{violet} \hitreport: 哈尔滨工业大学本科生泛用报告}
+% \author{孙骁 \\[5pt]\texttt{demerzelsun@gmail.com}}
+% \date{\fileversion\ (\filedate)}
+% \maketitle\thispagestyle{empty}
+%
+% \begin{abstract}\noindent
+% 此宏包旨在建立一个免于配置的、指令相对简单的哈尔滨工业大学作业、实验报告通用模板。
+% \end{abstract}
+%
+%
+% \vskip2cm
+% \def\abstractname{免责声明}
+% \begin{abstract}
+% \noindent
+% \begin{enumerate}
+% \item 本模板的发布遵守 \LaTeX\ Project Public License，使用前请认真阅读协议内
+%   容。
+% \item \textbf{本模板为作者编写的报告模板，与哈尔滨工业大学官方没有任何关系}。本模板的格式无法兼顾所有课程要求，
+% 但已经适配了绝大多数的需求场景。
+% 任何使用本宏包进行实验报告制作时，请\textbf{务必根据课程要求进行写作}。
+% 由于使用本模板而引起的作业验收问题，
+% 均与本模板作者无关。
+% \item 任何个人或组织以本模板为基础进行修改、扩展而生成的新的专用模板，
+% 请严格遵守 \LaTeX\ Project Public License 协议。
+% 由于违犯协议而引起的任何纠纷争端均与
+%   本模板作者无关。
+% \end{enumerate}
+% \end{abstract}
+%
+% \clearpage
+% \pagestyle{fancy}
+% \begin{multicols}{2}[
+%   \setlength{\columnseprule}{.4pt}
+%   \setlength{\columnsep}{18pt}]
+%   \tableofcontents
+% \end{multicols}
+% \clearpage
+%
+% \section{模板介绍}
+% \hitreport (\textbf{H}arbin \textbf{I}istitute of \textbf{T}echnology \LaTeX\ Versatile \textbf{Report} Template)是为哈尔滨工业大学一校三区的本科生设计的一个免于配置的作业、实验报告模板。希望它可以使你的作业或实验报告不会因形式上的缺陷导致评分的下降。
+%
+% 该文档格式基于 ctexbook, 主要完成了除了主体内容以外的几乎\textbf{全部}工作。同时，通过使用 Github 版本宏包，你还可以更好的管理自己的 \LaTeX 文档。
+%
+% 本文档将尽量完整的介绍模板的使用方法，如有不清楚之处可以参考示例文档或者根据第  节说明提问，有兴趣者都可以参与完善此手册，也非常欢迎在Github上提出Issues。
+% 
+% \section{安装}
+% \label{sec:installation}
+% \subsection{CTAN}
+% 	本宏包已被收纳于 CTAN 中，凡安装完整版 Texlive 用户可直接使用：
+% \begin{latex} 
+%    \usepackage{hitreport} 
+% \end{latex}
+% 进行写作，但是通常版本较旧，且不便更新。
+%
+% \subsection{Github}
+% 想获得最新版本的请前往 Github 主页下载：
+% \url{https://github.com/demerzelsun12/hitreport} 
+% 
+% 同时，面向 Github 版本的说明主要在 README.md 中，
+% 如果使用的是 Github 版本，请阅读 README.md
+%
+% \subsection{Gitee}
+% 为解决部分同学无法正常访问 GitHub 或者下载速度过慢的情况，
+% 本模板在 Gitee 上也做同步更新，Gitee下载地址为：
+% \url{https://gitee.com/demerzel/hitreport}
+% 
+% 模板支持在 TeX Live、MacTeX 和 MIKTeX 平台下进行编译，
+% 使用最新版本可以避免 bug。
+%
+% \subsection{模板的组成}
+% 由于报告的短时性的特点，也方便更多零基础的同学使用本模板，
+% 本模板进最大可能简化了非实际报告文字的配置部分。下表列出了模板的主要文件及其功能介绍：
+%
+% \begin{longtable}{l|p{8cm}}
+% \toprule
+% {\heiti 文件（夹）} & {\heiti 功能描述}\\\midrule
+% \endfirsthead
+% \midrule
+% {\heiti 文件（夹）} & {\heiti 功能描述}\\\midrule
+% \endhead
+% \endfoot
+% \endlastfoot
+% hitreport.ins & \textsc{DocStrip} 驱动文件（开发用） \\
+% hitreport.dtx & \textsc{DocStrip} 源文件（开发用）\\\midrule
+% ref/ & 示例文档参考文献目录 \\
+% figures/ & 示例文档图片路径 \\
+% data/ & 实例文档各章节路径 \\
+% photo/ & 模板封面引用图片路径 \\
+% code/ & 示例文档引用代码路径 \\\midrule
+% report.tex & 示例文档基本配置 \\
+% hitreport.cls & 模板类文件 \\
+% hitreport-example.tex & 示例文档主文件\\
+% hitreport-example.pdf & 示例文档 \\
+% hitsetup.tex & 示例文档基本配置\\\midrule
+% Makefile & 自动运行脚本 \\
+% latexmkrc & latexmk 配置文件 \\
+% README.md & 说明文件 \\
+% \textbf{hitreport.pdf} & 用户手册（本文档）\\ \bottomrule
+% \end{longtable}
+%
+% 几点说明：
+% \begin{itemize}
+% \item \file{hitreport.cls} 可由 \file{hitreport.ins}
+%   和 \file{hitreport.dtx} 生成，但为了降低新手用户的使用难度，故
+%   将 \file{hitreport.cls} 文件一起发布。新手可直接下载 Release 版
+%	本，Release 版本不包含 \file{hitreport.ins} 和
+%	\file{hitreport.dtx}。
+% \item 使用模板文件或对模板文件进行修改前请阅读本文档：
+%	\file{hitreport.pdf}。
+% \end{itemize}
+% 
+%
+% \subsection{生成模板}
+% \label{sec:generate-cls}
+%	模板的源文件（\file{hitreport.dtx}）中包含了大量的注释，需要将注
+%	释去掉生成轻量级的 \file{.cls} 文件供 \cs{documentclass} 调用。
+%	使用Makefile或 \XeLaTeX 生成模板文件。
+% \begin{shell}
+%    $ make cls 
+% \end{shell}
+% 或
+% \begin{shell}
+%    $ xelatex hitreport.ins
+% \end{shell}
+% 
+% \note[注意：]{如果没有生成的模板 \file{hitreport.cls} 文件
+%   （与 \file{hitreport-example.tex} 在同一目录下），
+%   \LaTeX{} 在编译时可能找到发行版中较旧版本的 \file{.cls}，从而造成编译冲突。}
+%
+% \subsection{生成报告}
+% \label{sec:gengrate-report}
+% 本节介绍几种常见的生成报告的方法。用户可根据自己的情况选择。
+%
+% 在撰写报告时，需要注意，代码引用可以使用相对路径，但是图片引用则必须
+% 放在 figures 文件夹下。如果需要对校徽以及校名图片名称进行修改， 
+% \file{hitreport.cls} 文件中相应位置也需要修改。
+%
+% 在撰写报告时，\textbf{不推荐}使用原有的 \file{hitreport-example.tex} 这一名称。
+% 建议将其复制一份，改为其他的名字（如 \file{report.tex} 或者 \file{main.tex}）。
+% 需要注意，如果使用了来自 \file{data} 目录中的 \file{tex} 文件，
+% 则重命名主文件后，其顶端的 \texttt{!TeX root} 选项也需要相应修改。
+%
+% \subsubsection{GNU make}
+% \label{sec:make}
+% 如果用户可以使用 GNU make 工具，这是最方便的办法。
+% 所以 \hitreport 提供了 \file{Makefile}：
+% \begin{shell}
+%    $ make report    # 生成报告示例 hitreport-example.pdf
+%    $ make doc       # 生成说明文档 hitreport.pdf
+%    $ make clean     # 清理编译生成的辅助文件
+% \end{shell}
+%
+% 需要注意，如果更改了主文件的名称，则需要修改 \file{Makefile} 顶端的 \texttt{REPORT} 变量定义。
+% 
+% \subsubsection{latexmk}
+% latexmk 命令支持全自动生成\LaTeX{}编写的文档，并且支持使用不同的工具链来进行生成，它会自动运行多次工具直到交叉引用都被解决。下面给出了一个用 latexmk 调用 xelatex 生成最终文档的示例:
+% \begin{shell}
+%    $ latexmk hitreport-example.tex		# 生成示例报告
+%    $ latexmk hitreport.dtx				# 生成说明文档hitreport.pdf
+%    $ latexmk -c							# 清理编译生成的辅助文件
+% \end{shell}
+% \texttt{latexmk} 的编译过程是通过 \file{latexmkrc} 文件来配置的，如果要进一步了解，
+% 可以参考 \pkg{latexmk} 文档。
+%
+%
+% \subsubsection{\XeLaTeX}
+% \label{sec:xelatex}
+% 如果用户无法使用以上两种较为方便的编译方法，就只能按照以下复杂的办法手动编译。
+%
+% 首先，更新模板：
+% \begin{shell}
+%    $ xetex hitreport.ins                       # 生成 hitreport.cls
+% \end{shell}
+%
+% 然后，生成论文：
+% \begin{shell}
+%    $ xelatex hitreport-example.tex
+%    $ bibtex hitreport-example.aux              # 生成 bbl 文件
+%    $ xelatex hitreport-example.tex             # 解决引用
+%    $ xelatex hitreport-example.tex             # 生成报告 PDF
+%
+% \end{shell}
+%
+% 使用下面的命令用来生成用户手册：
+% \begin{shell}
+%    $ xelatex -shell-escape hitreport.dtx
+%    $ makeindex -s gind.ist -o hitreport.ind hitreport.idx
+%    $ xelatex -shell-escape hitreport.dtx
+%    $ xelatex -shell-escape hitreport.dtx  # 生成说明文档 hitreport.pdf
+% \end{shell}
+%
+% \subsection{升级}
+% \label{sec:upgrade}
+% 如果需要升级 \hitreport{}，应当从 GitHub 下载最新的版本，
+% 将 \file{hitreport.dtx}，\file{hitreport.ins}，拷贝至工作目录覆盖相应的文件，然后按照
+% 第~\ref{sec:generate-cls} 节的内容生成新的模板和使用说明。
+%
+% 有时模板可能进行了重要的修改，不兼容已写好的正文内容，用户应按照示例
+% 文档重新调整。
+%
+%
+% \section{使用说明}
+% \label{sec:usage}
+% \subsection{示例文件}
+% 推荐从模板自带的示例文档入手，其中包括了论文写作用到的所有命令及其使用方法，只需要用自己的内容进行相应替换就可以。对于不清楚的命令可以查阅本手册。下面的例子描述了模板中章节的组织形式，来自于示例文档，具体内容可以参考模板附带的 \file{hitreport-example.tex}。
+%
+% \subsection{选项}
+% \label{sec:option}
+% \DescribeOption{language}
+% 报告的语言是中文，暂不支持英文。
+% \DescribeOption{open}
+% 正规出版物的章节出现在奇数页，也就是右手边的页面，这就是 \option{right}，。在这种情况下，如果前一章的最后一页也是奇数，那么模板会自动生成一个纯粹的空白页。
+% 提交的作业如果是电子稿的话，可以使用连续页，即使用\option{any}
+% \DescribeOption{wide}
+% 是否使用宽页面。如果生成作业的话，宽页面或许好看。
+% \DescribeOption{draft}
+% 是否生成水印。生成的水印为 Draft 表示此文档尚为草稿
+%
+% \subsection{字体配置}
+% \label{sec:font-config}
+% 模板默认可以自动检测操作系统，并配置改平台上合适的字体，
+% 具体的配置策略如表~\ref{tab:font}。
+% \begin{table}[htb]
+%   \centering
+%   \caption{hitreport 自动配置字体策略}
+%   \label{tab:font}
+%   \begin{tabular}{ccc}
+%     \toprule
+%     Windows         & macOS           & 其他            \\
+%     \midrule
+%     Times New Roman & Times New Roman & TeX Gyre Termes \\
+%     Arial           & Arial           & TeX Gyre Heros  \\
+%     Courier         & Menlo           & TeX Gyre Cursor \\
+%     中易宋体        & 华文宋体        & Noto 宋体     \\
+%     中易黑体        & 华文黑体        & Noto 黑体     \\
+%     \bottomrule
+%   \end{tabular}
+% \end{table}
+%
+% 然而自动配置的字体只能保证编译通过，但是还存在一些问题：
+% \begin{enumerate}
+%   \item 在其他平台上配置的 TeX Gyre 系列字体，虽然在风格上比较接近 Times 和 Arial，
+%     但是毕竟跟部分课程要求的字体不完全一致；
+%   \item 华文字库虽然不违反一般的写作要求，
+%     但是其字形跟中易字库有所差别，可能被批改老师认为格式不符合要求。
+% \end{enumerate}
+%
+% 所以建议在提交最终版前使用 Windows 平台的字体进行编译。
+%
+% 用户也可以在调用 hitreport 时手动指定使用的字库，如：
+%
+% \begin{latex}
+%   \documentclass[fontset=windows]{hitreport}
+% \end{latex}
+%
+% 允许的选项有 \option{windows}、\option{mac}，详
+% 见 \pkg{ctex}、\pkg{xeCJK}、\pkg{fontspec} 等宏包的使用说明。
+%
+%
+% \subsection{论文设置}
+% 论文的设置可以通过统一命令 \cs{hitsetup} 设置 \emph{key=value} 形式完成。
+%
+% \DescribeMacro{\hitsetup}
+% \cs{hitsetup} 用法与常见 \emph{key=value} 命令相同，如下：
+% \begin{latex}
+%   \hitsetup{
+%     key1 = value1,
+%     key2 = {a value, with comma},
+%   }
+%   % 可以多次调用
+%   \hitsetup{
+%     key3 = value3,
+%     key1 = value11,  % 覆盖 value1
+%   }
+% \end{latex}
+%
+% \note[注意：]{\cs{hitsetup} 使用 \pkg{kvsetkeys} 机制，所以配置项之间不能有空行，否则
+% 会报错。}
+%
+%
+%
+% \subsection{封面信息}
+%
+% \label{sec:titlepage}
+% 封面信息可以通过统一设置命令 \cs{hitsetup} 设置 \emph{key=value} 形式完成；
+% 带 * 号的键通常是对应的英文。
+%
+% \subsubsection{报告主标题}
+% 中文标题。可以在标题内部使用换行|\\|。
+% \begin{latex}
+%   \hitsetup{
+%     title  = {报告主标题},
+%   }
+% \end{latex}
+%
+% \subsubsection{报告副标题}
+% 中文标题。可以在标题内部使用换行|\\|。
+% \begin{latex}
+%   \hitsetup{
+%     expand  = {报告副标题},
+%   }
+% \end{latex}
+%
+% \subsubsection{院系名称}
+% 院系名称。
+% \begin{latex}
+%   \hitsetup{
+%     department = {系名全称},
+%   }
+% \end{latex}
+%
+% \subsubsection{专业名称}
+%
+% \begin{latex}
+%   \hitsetup{
+%     discipline  = {专业名称},
+%   }
+% \end{latex}
+%
+% \subsubsection{作者姓名}
+% 作者姓名。
+% \begin{latex}
+%   \hitsetup{
+%     author  = {中文姓名},
+%   }
+% \end{latex}
+%
+% \subsubsection{学号}
+% 学号。
+% \begin{latex}
+%   \hitsetup{
+%     student-id  = {1180310840},
+%   }
+% \end{latex}
+%
+% \subsubsection{指导教师}
+% 指导教师。
+% \begin{latex}
+%   \hitsetup{
+%     supervisor  = {指导教师},
+%   }
+% \end{latex}
+%
+% \subsubsection{实验地点}
+% 直接中文书写实验地点。
+% \begin{latex}
+%   \hitsetup{
+%     lablocation  = {格物207},
+%   }
+% \end{latex}
+%
+% \subsubsection{学期}
+% 课程学期，直接书写中文即可。
+% \begin{latex}
+%   \hitsetup{
+%     term  = {2021春季学期},
+%   }
+% \end{latex}
+%
+% \subsubsection{成文日期}
+% 默认为当前日期，也可以自己指定，要求使用 ISO 格式。
+% \begin{latex}
+%   \hitsetup{
+%     date = {2011-07-01},
+%   }
+% \end{latex}
+%
+%
+% \myentry{生成封面}
+% \DescribeMacro{\maketitle}
+% 生成封面。
+% \begin{latex}
+%   % 直接生成封面
+%   \maketitle
+% \end{latex}
+% 
+% \subsection{正文部分}
+% \subsubsection{数学符号}
+% \label{sec:math}
+% 报告的数学符号默认遵循 GB/T 3102.11—1993《物理科学和技术中使用的数学符号》。
+% 该标准参照采纳 ISO 31-11:1992，
+% 但是与 \TeX{} 默认的英美国家的符号习惯有许多差异，主要有：
+% \newcommand\dif{\mathop{}\!\mathrm{d}}
+% \begin{enumerate}
+%   \item 大写希腊字母默认为斜体，
+%     有限增量符号  固定使用正体。
+%   \item 数学常数和特殊函数名用正体。
+%   \item 微分号使用正体。
+%   \item 向量、矩阵和张量用粗斜体。
+%   \item 省略号按照中文的习惯固定居中。
+% \end{enumerate}
+%
+% \DescribeOption{math-style}
+% 英文论文的数学符号默认使用 \TeX{} 样式。
+% 如果有必要，也可以通过设置 \option{math-style} 选择数学符号样式，
+% 可选：\option{GB}（中文默认），\option{TeX}（英文默认），\option{ISO}。
+% \begin{latex}
+%   \hitsetup{
+%     math-style = ISO,
+%   }
+% \end{latex}
+%
+% 模板使用
+% \href{http://mirrors.ctan.org/macros/latex/contrib/unicode-math/unicode-math.pdf}{\pkg{unicode-math}}
+% 配置数学符号的字体。
+% 全部数学符号的命令参考
+% \href{http://mirrors.ctan.org/macros/latex/contrib/unicode-math/unimath-symbols.pdf}{\pkg{unimath-symbols}}。
+% 注意，\pkg{unicode-math} 宏包与 \pkg{amsfonts}、\pkg{amssymb}、\pkg{bm}、
+% \pkg{mathrsfs}、\pkg{upgreek} 等宏包\emph{不}兼容。
+% 模板作了处理，用户可以直接使用这些宏包的命令，如 \cs{bm}、\cs{mathscr}、
+% \cs{uppi}。
+%
+%
+% \subsubsection{定理环境}
+% \label{sec:theorem}
+% \hitreport 定义了常用的数学环境：
+%
+% \begin{center}
+% \begin{tabular}{*{7}{l}}\toprule
+%   axiom & theorem & definition & proposition & lemma & conjecture &\\
+%   公理 & 定理 & 定义 & 命题 & 引理 & 猜想 &\\\midrule
+%   proof & corollary & example  & assumption & remark & problem & solution\\
+%   证明 & 推论 & 例子 & 假设 & 注释 & 问题 & 解\\\bottomrule
+% \end{tabular}
+% \end{center}
+%
+% 比如：
+% \begin{latex}
+%   \begin{definition}
+%     道千乘之国，敬事而信，节用而爱人，使民以时。
+%   \end{definition}
+% \end{latex}
+% 产生（自动编号）：
+% \medskip
+%
+% \noindent\framebox[\linewidth][l]{{\heiti 定义~1.1~~~} % {道千乘之国，敬事而信，节用而爱人，使民以时。}}
+%
+% \smallskip
+% 列举出来的数学环境毕竟是有限的，如果想用\emph{胡说}这样的数学环境，那么可以定义：
+% \begin{latex}
+%   \newtheorem{nonsense}{胡说}[chapter]
+% \end{latex}
+%
+% 然后这样使用：
+% \begin{latex}
+%   \begin{nonsense}
+%     契丹武士要来中原夺武林秘笈。—— 慕容博
+%   \end{nonsense}
+% \end{latex}
+%
+% 产生（自动编号）：
+%
+% \medskip
+% \noindent\framebox[\linewidth][l]{{\heiti 胡说~1.1~~~} % {契丹武士要来中原夺武林秘笈。—— 慕容博}}
+% 
+% \subsection{其他部分}
+% \subsubsection{参考文献}
+% \label{sec:bibliography}
+%
+% 参考文献通常可以使用 \hologo{BibTeX} 或 biblatex 生成。
+% \hologo{BibTeX} 是 LaTeX 处理参考文献的传统的方式，
+% 需要在使用 \cs{bibliographystyle}\marg{style} 选择样式
+% 并用 \cs{bibliography} 设置 \file{.bib} 的路径。
+% 然后使用 \texttt{bibtex} 对 \file{.aux} 文件进行编译得到 \file{.bbl} 文件。
+% 其中的参考文献表内容会在后续编译时替换到 \cs{bibliography} 的位置。
+% Biblatex 是较新的方式，需要在载入宏包时通过 \option{style} 选择样式，
+% 在导言区使用 \cs{addbibresource} 声明数据库的路径，
+% 并在输出参考文献表的位置使用 \cs{printbibliography} 命令,
+% 而且编译参考文献的命令需要换为 biber。
+% 这两种方式各有优缺点，比如 BibTeX 无法对中文按照拼音排序，一些样式更新不够及时；
+% Biblatex 运行较缓慢，无法对多个参考文献表使用不同样式。
+% 用户需要根据实际选择合适的方式。
+%
+% 由于报告基本不做参考文献的格式要求，此处的制作较为宽泛，采用 APA 格式，
+% APA 的 BibTeX 样式由 \pkg{apacite} 宏包提供，需要在导言区调用：
+% \begin{latex}
+%   \usepackage[natbibapa]{apacite}
+%   \bibliographystyle{apacite}
+% \end{latex}
+% 其中 \option{natbibapa} 会调用 \pkg{natbib} 来处理引用，
+% 这也是宏包推荐的用法。
+% 注意目前的 \pkg{apacite} 只支持到 APA 第 6 版。
+% 更推荐使用已经更新到 APA 第 7 版的 \pkg{biblatex-apa}：
+% \begin{latex}
+%   \usepackage[style=apa]{biblatex}
+%   \addbibresource{refs-apa.bib}
+% \end{latex}
+% 注意，如果参考文献中引用了中文文献的话，这两种方法都不能正确调整格式，
+% 需要手动进行修改 \file{.bbl} 文件的内容，
+% 这时 BibTeX 比 biblatex 更简单些。
+%
+%
+%
+% \subsubsection{附录}
+%
+% 附录由 \cs{appendix} 命令开启，然后像正文一样书写。部分实验报告要求附录
+% 引用代码，可以使用相对路径引用。
+% \begin{latex}
+%   \appendix
+%   \chapter{...}
+%   ...
+% \end{latex}
+%
+%
+% \section{致谢}
+% 报告一般不需要添加致谢的章节，故本模板不做相应的制作。
+% 感谢以下宏包的作者，本宏包从中使用了部分代码和借鉴：
+% \begin{itemize}
+%  \item 清华大学\thuthesis \quad  https://github.com/tuna/thuthesis
+%  \item 哈尔滨工业大学 \hithesis \quad https://github.com/dustincys/hithesis
+% \end{itemize}
+% 
+% \StopEventually{\PrintIndex}
+% \clearpage
+%
+% \section{实现细节}
+% \subsection{基本信息}
+%    \begin{macrocode}
+%<cls>\NeedsTeXFormat{LaTeX2e}[2017/04/15]
+%<cls>\ProvidesClass{hitreport}
+%<cls>[2020/12/31 v1.1 Standard LaTeX Template for hitreport]
+%    \end{macrocode}
+%
+% 报错
+%    \begin{macrocode}
+\newcommand\hit@error[1]{%
+  \ClassError{hitreport}{#1}{}%
+}
+\newcommand\hit@warning[1]{%
+  \ClassWarning{hitreport}{#1}%
+}
+\newcommand\hit@patch@error[1]{%
+  \hit@error{Failed to patch command \protect#1}%
+}
+\newcommand\hit@deprecate[2]{%
+  \def\hit@@tmp{#2}%
+  \hit@warning{%
+    The #1 is deprecated%
+    \ifx\hit@@tmp\@empty\else
+      . Use #2 instead%
+    \fi
+  }%
+}
+%    \end{macrocode}
+%
+% 检查 \LaTeXe{} kernel 版本
+%    \begin{macrocode}
+\@ifl@t@r\fmtversion{2017/04/15}{}{
+  \hit@error{%
+    TeX Live 2017 or later version is required to compile this document%
+  }
+}
+%    \end{macrocode}
+%
+% 检查编译引擎，要求使用 \XeLaTeX。
+%    \begin{macrocode}
+\RequirePackage{ifxetex}
+\RequireXeTeX
+\ifxetex\else
+\ClassError{hitreport}{You must use the `xelatex' driver\MessageBreak 
+Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so on.}
+\fi
+%    \end{macrocode}
+%
+% \subsection{定义选项}
+% \label{sec:defoption}
+% 初始化信息
+%	\begin{macrocode}
+%<*cls>
+\RequirePackage{kvdefinekeys}
+\RequirePackage{kvsetkeys}
+\RequirePackage{kvoptions}
+\SetupKeyvalOptions{
+  family=hit,
+  prefix=hit@,
+  setkeys=\kvsetkeys}
+%    \end{macrocode}
+%
+% \begin{macro}{\hitsetup}
+% 提供一个 \cs{hitsetup} 命令支持 \emph{key-value} 的方式来设置。
+%    \begin{macrocode}
+\newcommand\hitsetup[1]{%
+  \kvsetkeys{hit}{#1}%
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% 同时用 \emph{key-value} 的方式来定义这些接口：
+% \begin{latex}
+%   \hit@define@key{
+%     <key> = {
+%       name = <name>,
+%       choices = {
+%         <choice1>,
+%         <choice2>,
+%       },
+%       default = <default>,
+%     },
+%   }
+% \end{latex}
+%
+% 其中 |choices| 设置允许使用的值，默认为第一个（或者 \meta{default}）；
+% \meta{code} 是相应的内容被设置时执行的代码。
+%
+%    \begin{macrocode}
+\newcommand\hit@define@key[1]{%
+  \kvsetkeys{hit@key}{#1}%
+}
+\kv@set@family@handler{hit@key}{%
+%    \end{macrocode}
+%
+% \cs{hitsetup} 会将 \meta{value} 存到 \cs{hit@\meta{key}}，
+% 但是宏的名字包含 “-” 这样的特殊字符时不方便直接调用，比如 |key = math-style|，
+% 这时可以用 |name| 设置 \meta{key} 的别称，比如 |key = math@style|，
+% 这样就可以通过 \cs{hit@math@style} 来引用。
+% |default| 是定义该 \meta{key} 时默认的值，缺省为空。
+%
+%    \begin{macrocode}
+  \@namedef{hit@#1@@name}{#1}%
+  \def\hit@@default{}%
+  \def\hit@@choices{}%
+  \kv@define@key{hit@value}{name}{%
+    \@namedef{hit@#1@@name}{##1}%
+  }%
+%    \end{macrocode}
+%
+% 由于在定义接口时，\cs{hit@\meta{key}@@code} 不一定有定义，
+% 而且在文档类/宏包中还有可能对该 |key| 的 |code| 进行添加。
+% 所以 \cs{hit@\meta{key}@@code} 会检查如果在定义文档类/宏包时则推迟执行，否则立即执行。
+%
+%    \begin{macrocode}
+  \@namedef{hit@#1@@check}{}%
+  \@namedef{hit@#1@@code}{}%
+%    \end{macrocode}
+%
+% 保存下 |choices = {}| 定义的内容，在定义 \cs{hit@\meta{name}} 后再执行。
+%
+%    \begin{macrocode}
+  \kv@define@key{hit@value}{choices}{%
+    \def\hit@@choices{##1}%
+    \@namedef{hit@#1@@reset}{}%
+%    \end{macrocode}
+%
+% \cs{hit@\meta{key}@check} 检查 |value| 是否有效，
+% 并设置 \cs{ifhit@\meta{name}@\meta{value}}。
+%
+%    \begin{macrocode}
+    \@namedef{hit@#1@@check}{%
+      \@ifundefined{%
+        ifhit@\@nameuse{hit@#1@@name}@\@nameuse{hit@\@nameuse{hit@#1@@name}}%
+      }{%
+        \hit@error{Invalid value "#1 = \@nameuse{hit@\@nameuse{hit@#1@@name}}"}%
+      }%
+      \@nameuse{hit@#1@@reset}%
+      \@nameuse{hit@\@nameuse{hit@#1@@name}@\@nameuse{hit@\@nameuse{hit@#1@@name}}true}%
+    }%
+  }%
+  \kv@define@key{hit@value}{default}{%
+    \def\hit@@default{##1}%
+  }%
+  \kvsetkeys{hit@value}{#2}%
+  \@namedef{hit@\@nameuse{hit@#1@@name}}{}%
+%    \end{macrocode}
+%
+% 第一个 \meta{choice} 设为 \meta{default}，
+% 并且对每个 \meta{choice} 定义 \cs{ifhit@\meta{name}@\meta{choice}}。
+%
+%    \begin{macrocode}
+  \kv@set@family@handler{hit@choice}{%
+    \ifx\hit@@default\@empty
+      \def\hit@@default{##1}%
+    \fi
+    \expandafter\newif\csname ifhit@\@nameuse{hit@#1@@name}@##1\endcsname
+    \expandafter\g@addto@macro\csname hit@#1@@reset\endcsname{%
+      \@nameuse{hit@\@nameuse{hit@#1@@name}@##1false}%
+    }%
+  }%
+  \kvsetkeys@expandafter{hit@choice}{\hit@@choices}%
+%    \end{macrocode}
+%
+% 将 \meta{default} 赋值到 \cs{hit@\meta{name}}，如果非空则执行相应的代码。
+%
+%    \begin{macrocode}
+  \expandafter\let\csname hit@\@nameuse{hit@#1@@name}\endcsname\hit@@default
+  \expandafter\ifx\csname hit@\@nameuse{hit@#1@@name}\endcsname\@empty\else
+    \@nameuse{hit@#1@@check}%
+  \fi
+%    \end{macrocode}
+%
+% 定义 \cs{hitsetup} 接口。
+%
+%    \begin{macrocode}
+  \kv@define@key{hit}{#1}{%
+    \@namedef{hit@\@nameuse{hit@#1@@name}}{##1}%
+    \@nameuse{hit@#1@@check}%
+    \@nameuse{hit@#1@@code}%
+  }%
+}
+%    \end{macrocode}
+%
+% 定义接口向 |key| 添加 |code|：
+%
+%    \begin{macrocode}
+\newcommand\hit@option@hook[2]{%
+  \expandafter\g@addto@macro\csname hit@#1@@code\endcsname{#2}%
+}
+%    \end{macrocode}
+% 论文的主要语言。
+%    \begin{macrocode}
+\hit@define@key{
+  main-language = {
+    name = main@language,
+    choices = {
+      chinese,
+      english,
+    },
+  },
+%    \end{macrocode}
+%
+% 用于设置局部语言。
+%    \begin{macrocode}
+  language = {
+    choices = {
+      chinese,
+      english,
+    },
+  },
+%    \end{macrocode}
+%
+% 字体
+%    \begin{macrocode}
+  fontset = {
+    choices = {
+      windows,
+      mac,
+      ubuntu,
+      none,
+    },
+    default = none,
+  },
+  system = {
+    choices = {
+      mac,
+      unix,
+      windows,
+      auto,
+    },
+    default = auto,
+  },
+  font = {
+    choices = {
+      times,
+      termes,
+      xits,
+      libertinus,
+      lm,
+      auto,
+      none,
+    },
+    default = auto,
+  },
+  cjk-font = {
+    name = cjk@font,
+    choices = {
+      windows,
+      mac,
+      noto,
+      auto,
+      none,
+    },
+    default = auto,
+  },
+  math-font = {
+    name = math@font,
+    choices = {
+      xits,
+      stix,
+      libertinus,
+      lm,
+      none,
+    },
+    default = xits,
+  },
+  math-style = {
+    name = math@style,
+    choices = {
+      GB,
+      ISO,
+      TeX,
+    },
+    default = GB,
+  },
+}
+%    \end{macrocode}
+%
+%
+% 定义关键字
+%    \begin{macrocode}
+\newcommand\hit@tokens@keywords{}
+\ProcessOptions\relax
+%    \end{macrocode}
+% 
+% 
+% 
+% \subsection{装载宏包}
+% \label{sec:loadpackage}
+%
+% 设置默认 \option{openany}。
+%    \begin{macrocode}
+\DeclareBoolOption[false]{openright}
+\DeclareComplementaryOption{openany}{openright}
+%    \end{macrocode}
+%
+% \option{raggedbottom} 选项（默认打开）
+%    \begin{macrocode}
+\DeclareBoolOption[true]{raggedbottom}
+%    \end{macrocode}
+% 将选项传递给 \pkg{ctexbook}。
+%    \begin{macrocode}
+\DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{ctexbook}}
+%    \end{macrocode}
+%
+% 解析用户传递过来的选项，并加载 \pkg{ctexbook}。
+%    \begin{macrocode}
+\ProcessKeyvalOptions*
+%    \end{macrocode}
+%
+% 设置默认 \option{openany}。
+%    \begin{macrocode}
+\ifhit@openright
+  \PassOptionsToClass{openright}{book}
+\else
+  \PassOptionsToClass{openany}{book}
+\fi
+%    \end{macrocode}
+%
+% 使用 \pkg{ctexbook} 宏包，优于调用 \pkg{ctex} 宏包
+%    \begin{macrocode}
+\PassOptionsToPackage{quiet}{fontspec}
+\LoadClass[a4paper,UTF8,zihao=-4,scheme=plain,fontset=none]{ctexbook}[2017/04/01]
+%    \end{macrocode}
+%
+% 引用宏包和相关定义
+%    \begin{macrocode}
+\RequirePackage{etoolbox}
+\RequirePackage{filehook}
+\RequirePackage{xparse}
+%    \end{macrocode}
+%
+% 设置页面布局
+%    \begin{macrocode}
+\RequirePackage{geometry}
+\geometry{
+  paper          = a4paper,  % 210 * 297mm
+  marginparwidth = 2cm,
+  marginparsep   = 0.5cm,
+}
+\newcommand\hit@set@geometry{%
+  \geometry{
+    top        = 3.8cm,
+    bottom     = 3.2cm,
+    left       = 3.2cm,
+    right      = 3cm,
+    headheight = 0.5cm,
+    headsep    = 1.4cm,
+    footskip   = 1.45cm,
+  }%
+}
+\hit@set@geometry
+%    \end{macrocode}
+%
+% 利用 \pkg{fancyhdr} 设置页眉页脚。
+%    \begin{macrocode}
+\RequirePackage{fancyhdr}
+%    \end{macrocode}
+%
+% 设置目录
+%    \begin{macrocode}
+\RequirePackage{titletoc}
+%    \end{macrocode}
+%
+% 利用 \pkg{notoccite} 避免目录中引用编号混乱。
+%    \begin{macrocode}
+\RequirePackage{notoccite}
+%    \end{macrocode}
+%
+%
+% 数学宏包，\AmSTeX\ 宏包，用来排公式。
+%    \begin{macrocode}
+\RequirePackage{amsmath}
+%    \end{macrocode}
+%
+% 使用 \pkg{unicode-math} 处理数学字体。
+%    \begin{macrocode}
+\RequirePackage{unicode-math}
+%    \end{macrocode}
+%
+% 支持tikz画图
+%    \begin{macrocode}
+\RequirePackage{tikz}
+%    \end{macrocode}
+%
+% \pkg{pdfpages} 宏包便于插入 PDF 文档。
+%    \begin{macrocode}
+\RequirePackage{pdfpages}
+\includepdfset{fitpaper=true}
+%    \end{macrocode}
+%
+% 设置颜色
+%    \begin{macrocode}
+\RequirePackage{xcolor}
+%    \end{macrocode}
+%
+% 支持插入图片
+%    \begin{macrocode}
+\RequirePackage{graphicx}
+%    \end{macrocode}
+%
+% 并排图形。\pkg{subfigure}、\pkg{subfig} 已经不再推荐，用新的 \pkg{subcaption}。
+% 浮动图形和表格标题样式。\pkg{caption2} 已经不推荐使用，采用新的 \pkg{caption}。
+%    \begin{macrocode}
+\RequirePackage[labelformat=simple]{subcaption}
+%    \end{macrocode}
+%
+%	支持文章内部引用
+%    \begin{macrocode}
+\RequirePackage{hyperref}
+%    \end{macrocode}
+%
+%	支持添加表格
+%    \begin{macrocode}
+\RequirePackage{array}
+%    \end{macrocode}
+%
+%	支持表格跨页显示，booktabs 提供了 \cs{toprule} 等命令.
+%    \begin{macrocode}
+\RequirePackage{longtable}
+\RequirePackage{booktabs}
+%    \end{macrocode}
+%
+%	multirow 支持在表格中跨行
+%    \begin{macrocode}
+\RequirePackage{multirow}
+%    \end{macrocode}
+%
+%	支持表格过长跨页显示
+%    \begin{macrocode}
+\RequirePackage{threeparttable}
+%    \end{macrocode}
+%
+%	调整间隔, 让表格更好看些
+%    \begin{macrocode}
+\RequirePackage{bigstrut}
+%    \end{macrocode}
+%
+%	在跨行表格中输入定界符
+%    \begin{macrocode}
+\RequirePackage{bigdelim}
+%    \end{macrocode}
+%
+%	保护脆弱命令
+%    \begin{macrocode}
+\RequirePackage{cprotect}
+%    \end{macrocode}
+%
+%	设置代码环境
+%    \begin{macrocode}
+\RequirePackage{listings}
+%    \end{macrocode}
+%
+%	支持代码根据语言类型高亮
+%    \begin{macrocode}
+\RequirePackage{xcolor}
+%    \end{macrocode}
+%
+%	支持url引用
+%    \begin{macrocode}
+\RequirePackage{url}
+%    \end{macrocode}
+%
+%	支持插入algorithm伪代码
+%    \begin{macrocode}
+\RequirePackage{algorithm,float}
+\RequirePackage{algpseudocode}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}  % Use Input in the format of Algorithm  
+\renewcommand{\algorithmicensure}{\textbf{Output:}} % Use Output in  the format of Algorithm 
+%    \end{macrocode}
+%
+%	允许算法伪代码跨页显示
+%    \begin{macrocode}
+\newenvironment{breakablealgorithm}
+  {% \begin{breakablealgorithm}
+   \begin{center}
+     \refstepcounter{algorithm}% New algorithm
+     \hrule height.8pt depth0pt \kern2pt% \@fs@pre for \@fs@ruled
+     \renewcommand{\caption}[2][\relax]{% Make a new \caption
+       {\raggedright\textbf{\ALG@name~\thealgorithm} ##2\par}%
+       \ifx\relax##1\relax % #1 is \relax
+         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##2}%
+       \else % #1 is not \relax
+         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##1}%
+       \fi
+       \kern2pt\hrule\kern2pt
+     }
+  }{% \end{breakablealgorithm}
+     \kern2pt\hrule\relax% \@fs@post for \@fs@ruled
+   \end{center}
+  }
+%
+%    \end{macrocode}
+% 如果用户在导言区未调用 \pkg{biblatex}，则自动调用 \pkg{natbib}。
+%    \begin{macrocode}
+\AtEndPreamble{
+  \@ifpackageloaded{biblatex}{}{
+    \@ifpackageloaded{apacite}{}{
+      \RequirePackage{natbib}
+    }
+  }
+}
+\AtEndOfPackageFile*{natbib}{
+  \@ifpackageloaded{apacite}{}{
+    \RequirePackage{bibunits}
+  }
+}
+%    \end{macrocode}
+%
+% 对冲突的宏包报错。
+%    \begin{macrocode}
+\newcommand\hit@package@conflict[2]{
+  \AtBeginOfPackageFile*{#2}{
+    \hit@error{The "#2" package is incompatible with required "#1"}
+  }
+}
+\hit@package@conflict{unicode-math}{amscd}
+\hit@package@conflict{unicode-math}{amsfonts}
+\hit@package@conflict{unicode-math}{amssymb}
+\hit@package@conflict{unicode-math}{bbm}
+\hit@package@conflict{unicode-math}{bm}
+\hit@package@conflict{unicode-math}{eucal}
+\hit@package@conflict{unicode-math}{eufrak}
+\hit@package@conflict{unicode-math}{mathrsfs}
+%    \end{macrocode}
+%
+%	支持文中引用
+%    \begin{macrocode}
+\RequirePackage{cite}
+%    \end{macrocode}
+%
+%	插入代码，进行设置
+%    \begin{macrocode}
+\RequirePackage{listings}
+\lstset{
+    numbers=left, %设置行号位置
+    numberstyle=\tiny, %设置行号大小
+    keywordstyle=\color{blue}, %设置关键字颜色
+    commentstyle=\color[cmyk]{1,0,1,0}, %设置注释颜色
+    frame=single, %设置边框格式
+    escapeinside=``, %逃逸字符(1左面的键)，用于显示中文
+    breaklines, %自动折行
+    extendedchars=false, %解决代码跨页时，章节标题，页眉等汉字不显示的问题
+    xleftmargin=2em,
+    xrightmargin=2em,
+    aboveskip=1em, %设置边距
+    tabsize=4, %设置tab空格数
+    showspaces=false, %不显示空格
+    belowskip=3mm,
+    showstringspaces=false,columns=flexible,
+    framerule=1pt,
+    rulecolor=\color{gray!35},
+    backgroundcolor=\color{gray!5},
+    basicstyle={\small\ttfamily},
+    stringstyle=\color{mauve},
+    breakatwhitespace=true
+}
+%    \end{macrocode}
+%
+%	重定义颜色
+%    \begin{macrocode}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+%    \end{macrocode}
+%	定义首行缩进	
+%    \begin{macrocode}
+\RequirePackage{indentfirst}
+%    \end{macrocode}
+%	设置浮动体标题
+%    \begin{macrocode}
+\RequirePackage{caption}
+%    \end{macrocode}
+%	设置列表环境
+%    \begin{macrocode}
+\RequirePackage[shortlabels]{enumitem}
+\RequirePackage{environ}
+%    \end{macrocode}
+%
+% 禁止 \LaTeX{} 自动调整多余的页面底部空白，并保持脚注仍然在底部。
+% 脚注按页编号。
+%    \begin{macrocode}
+\ifhit@raggedbottom
+  \RequirePackage[bottom,perpage,hang]{footmisc}
+  \raggedbottom
+\else
+  \RequirePackage[perpage,hang]{footmisc}
+\fi
+%    \end{macrocode}
+%
+% 利用 \pkg{xeCJKfntef} 实现汉字的下划线和盒子内两段对齐，并可以避免
+% \cs{makebox}\oarg{width}\oarg{s} 可能产生的 underful boxes。
+%    \begin{macrocode}
+\RequirePackage{xeCJKfntef}
+\RequirePackage{soul}
+%    \end{macrocode}
+%
+%	下划线
+%    \begin{macrocode}
+\RequirePackage{ulem}
+%
+%    \end{macrocode}
+%	尺寸计算
+%    \begin{macrocode}
+\RequirePackage{calc}
+%    \end{macrocode}
+%	支持插入附录
+%    \begin{macrocode}
+\RequirePackage[titletoc,title]{appendix}
+\AtBeginEnvironment{thebibliography}{%
+    \phantomsection
+    \addcontentsline{toc}{section}{\refname}
+    }
+%    \end{macrocode}
+%
+%	页面布局
+%    \begin{macrocode}
+\renewcommand*{\baselinestretch}{1.38}
+%    \end{macrocode}
+%	修改tabular 环境, 设置表格中的行间距为正文行间距.
+%    \begin{macrocode}
+\let\hitreport@oldtabular\tabular
+\let\hitreport@endoldtabular\endtabular
+\renewenvironment{tabular}%
+	{\bgroup%
+	\renewcommand{\arraystretch}{1.2}%
+	\hitreport@oldtabular}%
+	{\hitreport@endoldtabular\egroup}
+%    \end{macrocode}
+%	段首缩进两个汉字
+%    \begin{macrocode}
+\setlength\parindent{2em}
+%    \end{macrocode}
+%
+% \subsection{主文档格式}
+% \label{sec:mainbody}
+%
+% \subsubsection{Three matters}
+% \begin{macro}{\cleardoublepage}
+% 对于 \textsl{openright} 选项，必须保证章首页右开，且如果前章末页无内容须
+% 清空其页眉页脚。
+%    \begin{macrocode}
+\def\cleardoublepage{%
+  \clearpage
+  \if@twoside
+    \ifodd\c@page
+    \fi
+  \fi
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\frontmatter}
+% \begin{macro}{\mainmatter}
+% \begin{macro}{\backmatter}
+% 我们的单面和双面模式与常规的不太一样。
+%    \begin{macrocode}
+\renewcommand\frontmatter{%
+  \cleardoublepage
+  \@mainmatterfalse
+  \pagenumbering{Roman}%
+}
+\renewcommand\mainmatter{%
+  \cleardoublepage
+  \@mainmattertrue
+  \pagenumbering{arabic}%
+}
+\renewcommand\backmatter{%
+  \if@openright
+    \cleardoublepage
+  \else
+    \clearpage
+  \fi
+  \@mainmatterfalse
+}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+%
+% \subsubsection{字体}
+% \label{sec:font}
+% 使用 \pkg{fontspec} 配置字体。
+%    \begin{macrocode}
+\ifhit@fontset@mac
+  \hitsetup{
+    font     = times,
+    cjk-font = mac,
+  }
+\else
+  \ifhit@fontset@windows
+    \hitsetup{
+      font     = times,
+      cjk-font = windows,
+    }
+  \else
+    \ifhit@fontset@ubuntu
+      \hitsetup{
+        font     = termes,
+        cjk-font = noto,
+      }
+    \fi
+  \fi
+\fi
+%    \end{macrocode}
+%
+% 检测系统
+%    \begin{macrocode}
+\ifhit@system@auto
+  \IfFileExists{/System/Library/Fonts/Menlo.ttc}{
+    \hitsetup{system = mac}
+  }{
+    \IfFileExists{/dev/null}{
+      \IfFileExists{null:}{
+        \hitsetup{system = windows}
+      }{
+        \hitsetup{system = unix}
+      }
+    }{
+      \hitsetup{system = windows}
+    }
+  }
+\fi
+%    \end{macrocode}
+%
+% XITS 字体于 2018-10-03 更改了字体的文件名，所以需要判断。
+% 原文件名为 \file{xits-regular.otf}、\file{xits-math.otf} 等，
+% 后改为 \file{XITS-Regular.otf}、\file{XITSMath-Regular.otf} 等。
+%
+% Libertinus 字体同样。
+%    \begin{macrocode}
+\let\hit@font@family@xits\@empty
+\newcommand\hit@set@xits@names{%
+  \ifx\hit@font@family@xits\@empty
+    \IfFontExistsTF{XITSMath-Regular.otf}{%
+      \gdef\hit@font@family@xits{XITS}%
+      \gdef\hit@font@style@xits@rm{Regular}%
+      \gdef\hit@font@style@xits@bf{Bold}%
+      \gdef\hit@font@style@xits@it{Italic}%
+      \gdef\hit@font@style@xits@bfit{BoldItalic}%
+      \gdef\hit@font@name@xits@math@rm{XITSMath-Regular}%
+      \gdef\hit@font@name@xits@math@bf{XITSMath-Bold}%
+    }{%
+      \gdef\hit@font@family@xits{xits}%
+      \gdef\hit@font@style@xits@rm{regular}%
+      \gdef\hit@font@style@xits@bf{bold}%
+      \gdef\hit@font@style@xits@it{italic}%
+      \gdef\hit@font@style@xits@bfit{bolditalic}%
+      \gdef\hit@font@name@xits@math@rm{xits-math}%
+      \gdef\hit@font@name@xits@math@bf{xits-mathbold}%
+    }%
+  \fi
+}
+\let\hit@font@family@libertinus\@empty
+\newcommand\hit@set@libertinus@names{%
+  \ifx\hit@font@family@libertinus\@empty
+    \IfFontExistsTF{LibertinusSerif-Regular.otf}{%
+      \gdef\hit@font@family@libertinus@serif{LibertinusSerif}%
+      \gdef\hit@font@family@libertinus@sans{LibertinusSans}%
+      \gdef\hit@font@name@libertinus@math{LibertinusMath-Regular}%
+      \gdef\hit@font@style@libertinus@rm{Regular}%
+      \gdef\hit@font@style@libertinus@bf{Bold}%
+      \gdef\hit@font@style@libertinus@it{Italic}%
+      \gdef\hit@font@style@libertinus@bfit{BoldItalic}%
+    }{%
+      \gdef\hit@font@family@libertinus@serif{libertinusserif}%
+      \gdef\hit@font@family@libertinus@sans{libertinussans}%
+      \gdef\hit@font@name@libertinus@math{libertinusmath-regular}%
+      \gdef\hit@font@style@libertinus@rm{regular}%
+      \gdef\hit@font@style@libertinus@bf{bold}%
+      \gdef\hit@font@style@libertinus@it{italic}%
+      \gdef\hit@font@style@libertinus@bfit{bolditalic}%
+    }%
+  \fi
+}
+%    \end{macrocode}
+%
+% 一般的报告要求西文字体使用 Times New Roman 和 Arial，
+% 但是在 Linux 下没有这两个字体，所以使用它们的克隆版 TeX Gyre Termes 和
+% TeX Gyre Heros。
+%    \begin{macrocode}
+\ifhit@font@auto
+  \ifhit@system@unix
+    \hitsetup{font=termes}
+  \else
+    \hitsetup{font=times}
+  \fi
+\fi
+\newcommand\hit@load@font@times{%
+  \setmainfont{Times New Roman}%
+  \setsansfont{Arial}%
+  \ifhit@system@mac
+    \setmonofont{Menlo}[Scale = MatchLowercase]%
+  \else
+    \setmonofont{Courier New}[Scale = MatchLowercase]%
+  \fi
+}
+\newcommand\hit@load@font@termes{%
+  \setmainfont{texgyretermes}[
+    Extension      = .otf,
+    UprightFont    = *-regular,
+    BoldFont       = *-bold,
+    ItalicFont     = *-italic,
+    BoldItalicFont = *-bolditalic,
+  ]%
+  \hit@load@texgyre@sans@mono
+}
+\newcommand\hit@load@texgyre@sans@mono{%
+  \setsansfont{texgyreheros}[
+    Extension      = .otf,
+    UprightFont    = *-regular,
+    BoldFont       = *-bold,
+    ItalicFont     = *-italic,
+    BoldItalicFont = *-bolditalic,
+  ]%
+  \setmonofont{texgyrecursor}[
+    Extension      = .otf,
+    UprightFont    = *-regular,
+    BoldFont       = *-bold,
+    ItalicFont     = *-italic,
+    BoldItalicFont = *-bolditalic,
+    Ligatures      = CommonOff,
+  ]%
+}
+\newcommand\hit@load@font@xits{%
+  \hit@set@xits@names
+  \setmainfont{\hit@font@family@xits}[
+    Extension      = .otf,
+    UprightFont    = *-\hit@font@style@xits@rm,
+    BoldFont       = *-\hit@font@style@xits@bf,
+    ItalicFont     = *-\hit@font@style@xits@it,
+    BoldItalicFont = *-\hit@font@style@xits@bfit,
+  ]%
+  \hit@load@texgyre@sans@mono
+}
+\newcommand\hit@load@font@libertinus{%
+  \hit@set@libertinus@names
+  \setmainfont{\hit@font@family@libertinus@serif}[
+    Extension      = .otf,
+    UprightFont    = *-\hit@font@style@libertinus@rm,
+    BoldFont       = *-\hit@font@style@libertinus@bf,
+    ItalicFont     = *-\hit@font@style@libertinus@it,
+    BoldItalicFont = *-\hit@font@style@libertinus@bfit,
+  ]%
+  \setsansfont{\hit@font@family@libertinus@sans}[
+    Extension      = .otf,
+    UprightFont    = *-\hit@font@style@libertinus@rm,
+    BoldFont       = *-\hit@font@style@libertinus@bf,
+    ItalicFont     = *-\hit@font@style@libertinus@it,
+  ]%
+  \setmonofont{lmmonolt10}[
+    Extension      = .otf,
+    UprightFont    = *-regular,
+    BoldFont       = *-bold,
+    ItalicFont     = *-oblique,
+    BoldItalicFont = *-boldoblique,
+  ]%
+}
+\@namedef{hit@load@font@lm}{%
+  \setmainfont{lmroman10}[
+    Extension      = .otf,
+    UprightFont    = *-regular,
+    BoldFont       = *-bold,
+    ItalicFont     = *-italic,
+    BoldItalicFont = *-bolditalic,
+  ]%
+  \setsansfont{lmsans10}[
+    Extension      = .otf,
+    UprightFont    = *-regular,
+    BoldFont       = *-bold,
+    ItalicFont     = *-oblique,
+    BoldItalicFont = *-boldoblique,
+  ]%
+  \setmonofont{lmmonolt10}[
+    Extension      = .otf,
+    UprightFont    = *-regular,
+    BoldFont       = *-bold,
+    ItalicFont     = *-oblique,
+    BoldItalicFont = *-boldoblique,
+  ]%
+}
+\newcommand\hit@load@font{%
+  \@nameuse{hit@load@font@\hit@font}%
+}
+\hit@load@font
+\hit@option@hook{font}{\hit@load@font}
+%    \end{macrocode}
+%
+% 使用 \pkg{unicode-math} 配置数学符号格式。
+%    \begin{macrocode}
+\newcommand\hit@stix@stylistic@set{%
+  \ifhit@math@style@TeX\else
+    8
+  \fi
+}
+\newcommand\hit@set@math@style{%
+  \ifhit@math@style@TeX
+    \unimathsetup{
+      math-style = TeX,
+      bold-style = TeX,
+      partial    = italic,
+    }%
+  \else
+    \unimathsetup{
+      math-style = ISO,
+      bold-style = ISO,
+      partial    = upright,
+    }%
+  \fi
+  \ifhit@math@style@GB
+    \protected\def\le{\leqslant}%
+    \protected\def\ge{\geqslant}%
+    \DeclareRobustCommand\mathellipsis{\mathinner{\unicodecdots}}%
+  \else
+    \protected\def\le{\leq}%
+    \protected\def\ge{\geq}%
+    \DeclareRobustCommand\mathellipsis{\mathinner{\unicodeellipsis}}%
+  \fi
+}
+\ifhit@main@language@chinese
+  \hitsetup{math-style=GB}%
+\else
+  \hitsetup{math-style=TeX}%
+\fi
+\hit@set@math@style
+\hit@option@hook{math-style}{\hit@set@math@style}
+\hit@option@hook{main-language}{%
+  \ifhit@main@language@chinese
+    \hitsetup{math-style=GB}%
+  \else
+    \hitsetup{math-style=TeX}%
+  \fi
+}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\newcommand\hit@load@math@font@xits{%
+  \hit@set@xits@names
+  \setmathfont{\hit@font@name@xits@math@rm}[
+    Extension    = .otf,
+    StylisticSet = \hit@stix@stylistic@set,
+  ]%
+  \setmathfont{\hit@font@name@xits@math@rm}[
+    Extension    = .otf,
+    StylisticSet = 1,
+    range        = {cal,bfcal},
+  ]%
+}
+\newcommand\hit@load@math@font@stix{%
+  \setmathfont{STIX2Math}[
+    Extension    = .otf,
+    StylisticSet = \hit@stix@stylistic@set,
+  ]%
+  \setmathfont{STIX2Math}[
+    Extension    = .otf,
+    StylisticSet = 1,
+    range        = {cal,bfcal},
+  ]%
+}
+\newcommand\hit@load@math@font@libertinus{%
+  \hit@set@libertinus@names
+  \setmathfont{\hit@font@name@libertinus@math .otf}%
+}
+\newcommand\hit@load@math@font@lm{%
+  \setmathfont{latinmodern-math.otf}%
+}
+\newcommand\hit@load@math@font{%
+  \@nameuse{hit@load@math@font@\hit@math@font}
+}
+\hit@load@math@font
+\hit@option@hook{math-font}{\hit@load@math@font}
+\hit@option@hook{math-style}{\hit@load@math@font}
+%    \end{macrocode}
+%
+%
+% 中文字体
+%    \begin{macrocode}
+\ifhit@cjk@font@auto
+  \ifhit@system@mac
+    \hitsetup{cjk-font = mac}
+  \else
+    \ifhit@system@windows
+      \hitsetup{cjk-font = windows}
+    \else
+      \hitsetup{cjk-font = noto}
+    \fi
+  \fi
+\fi
+\newcommand\hit@load@cjk@font@windows{%
+  \xeCJKsetup{EmboldenFactor=3}%
+  \setCJKmainfont{SimSun}[
+    AutoFakeBold = true,
+    ItalicFont   = KaiTi,
+  ]%
+  \setCJKsansfont{SimHei}[AutoFakeBold]%
+  \setCJKmonofont{FangSong}%
+  \setCJKfamilyfont{zhsong}{SimSun}[AutoFakeBold]%
+  \setCJKfamilyfont{zhhei}{SimHei}[AutoFakeBold]%
+  \setCJKfamilyfont{zhkai}{KaiTi}%
+  \setCJKfamilyfont{zhfs}{FangSong}%
+  \setCJKfamilyfont{hwxk}{STXingkai}%
+}
+\newcommand\hit@load@cjk@font@mac{%
+  \setCJKmainfont{Songti SC}[
+    UprightFont    = * Light,
+    BoldFont       = * Bold,
+    ItalicFont     = Kaiti SC,
+    BoldItalicFont = Kaiti SC Bold,
+  ]%
+  \setCJKsansfont{Heiti SC}[BoldFont=* Medium]%
+  \setCJKmonofont{STFangsong}
+  \setCJKfamilyfont{zhsong}{Songti SC}[
+    UprightFont = * Light,
+      BoldFont  = * Bold,
+  ]%
+  \setCJKfamilyfont{zhhei}{Heiti SC}[
+    UprightFont = * Light,
+    BoldFont    = * Medium,
+  ]%
+  \setCJKfamilyfont{zhfs}{STFangsong}%
+  \setCJKfamilyfont{hwxk}{STXingkai}%
+  \setCJKfamilyfont{zhkai}{Kaiti SC}[BoldFont = * Bold]%
+  \setCJKfamilyfont{zhli}{Baoli SC}%
+  \setCJKfamilyfont{zhyuan}{Yuanyi SC}[
+    UprightFont = * Light,
+    BoldFont    = * Bold,
+  ]%
+}
+%    \end{macrocode}
+%
+% 注意 Noto CJK 的 regular 字重名字不带“Regular”。
+%    \begin{macrocode}
+\newcommand\hit@load@cjk@font@noto{%
+  \setCJKmainfont{Noto Serif CJK SC}[
+    UprightFont    = * Light,
+    BoldFont       = * Bold,
+    ItalicFont     = FandolKai-Regular,
+    ItalicFeatures = {Extension = .otf},
+  ]%
+  \setCJKsansfont{Noto Sans CJK SC}[
+    BoldFont    = * Medium,
+  ]%
+  \setCJKmonofont{Noto Sans Mono CJK SC}%
+  \setCJKfamilyfont{zhsong}{Noto Serif CJK SC}[
+    UprightFont = * Light,
+    UprightFont = * Bold,
+  ]%
+  \setCJKfamilyfont{zhhei}{Noto Sans CJK SC}[
+    BoldFont    = * Medium,
+  ]%
+  \setCJKfamilyfont{zhfs}{FandolFang}[
+    Extension   = .otf,
+    UprightFont = *-Regular,
+  ]%
+  \setCJKfamilyfont{zhkai}{FandolKai}[
+    Extension   = .otf,
+    UprightFont = *-Regular,
+  ]%
+  \setCJKfamilyfont{hwxk}{STXingkai}[
+    Extension   = .otf,
+    UprightFont = *-Regular,
+  ]%
+}
+\ifhit@cjk@font@none\else
+  \providecommand\songti{\CJKfamily{zhsong}}
+  \providecommand\heiti{\CJKfamily{zhhei}}
+  \providecommand\fangsong{\CJKfamily{zhfs}}
+  \providecommand\kaishu{\CJKfamily{zhkai}}
+  \providecommand\huawenxingkai{\CJKfamily{hwxk}}
+\fi
+\newcommand\hit@load@cjk@font{%
+  \@nameuse{hit@load@cjk@font@\hit@cjk@font}%
+}
+\hit@load@cjk@font
+\hit@option@hook{cjk-font}{\hit@load@cjk@font}
+%    \end{macrocode}
+%
+% \begin{macro}{\normalsize}
+% 正文小四号 (12bp) 字，行距为固定值 20 bp。
+% 其他字号的行距按照相同的比例设置。
+%
+% 表达式行的行距为单倍行距，段前空 6 磅，段后空 6 磅。
+%    \begin{macrocode}
+\renewcommand\normalsize{%
+  \@setfontsize\normalsize{12bp}{20bp}%
+  \abovedisplayskip=6bp%
+  \abovedisplayshortskip=6bp%
+  \belowdisplayskip=\abovedisplayskip
+  \belowdisplayshortskip=\abovedisplayshortskip}
+
+\normalsize
+\ifx\MakeRobust\@undefined \else
+    \MakeRobust\normalsize
+\fi
+\DeclareRobustCommand\small{%
+   \@setfontsize\small{10.5bp}{17.5bp}%
+   \abovedisplayskip 6bp%
+   \abovedisplayshortskip 6bp%
+   \belowdisplayshortskip 6bp%
+   \def\@listi{\leftmargin\leftmargini
+               \topsep \z@skip
+               \parsep \z@skip
+               \itemsep \z@skip}%
+   \belowdisplayskip \abovedisplayskip
+}
+\DeclareRobustCommand\footnotesize{%
+   \@setfontsize\footnotesize{9bp}{15bp}%
+   \abovedisplayskip 6bp%
+   \abovedisplayshortskip 6bp%
+   \belowdisplayshortskip 6bp%
+   \def\@listi{\leftmargin\leftmargini
+               \topsep \z@skip
+               \parsep \z@skip
+               \itemsep \z@skip}%
+   \belowdisplayskip \abovedisplayskip
+}
+\DeclareRobustCommand\scriptsize{\@setfontsize\scriptsize{7.5bp}{12.5bp}}
+\DeclareRobustCommand\tiny{\@setfontsize\tiny{6.5bp}{10.83bp}}
+\DeclareRobustCommand\large{\@setfontsize\large{15bp}{25bp}}
+\DeclareRobustCommand\Large{\@setfontsize\Large{18bp}{30bp}}
+\DeclareRobustCommand\LARGE{\@setfontsize\LARGE{22bp}{36.67bp}}
+\DeclareRobustCommand\huge{\@setfontsize\huge{24bp}{40bp}}
+\DeclareRobustCommand\Huge{\@setfontsize\Huge{26bp}{43.33bp}}
+%    \end{macrocode}
+% \end{macro}
+%
+% WORD 中的字号对应该关系如下（1bp = 72.27/72 pt）:
+% \begin{center}
+% \begin{longtable}{llll}
+% \toprule
+% 初号 & 42bp & 14.82mm & 42.1575pt \\
+% 小初 & 36bp & 12.70mm & 36.135 pt \\
+% 一号 & 26bp & 9.17mm & 26.0975pt \\
+% 小一 & 24bp & 8.47mm & 24.09pt \\
+% 二号 & 22bp & 7.76mm & 22.0825pt \\
+% 小二 & 18bp & 6.35mm & 18.0675pt \\
+% 三号 & 16bp & 5.64mm & 16.06pt \\
+% 小三 & 15bp & 5.29mm & 15.05625pt \\
+% 四号 & 14bp & 4.94mm & 14.0525pt \\
+% 小四 & 12bp & 4.23mm & 12.045pt \\
+% 五号 & 10.5bp & 3.70mm & 10.59375pt \\
+% 小五 & 9bp & 3.18mm & 9.03375pt \\
+% 六号 & 7.5bp & 2.56mm & \\
+% 小六 & 6.5bp & 2.29mm & \\
+% 七号 & 5.5bp & 1.94mm & \\
+% 八号 & 5bp & 1.76mm & \\\bottomrule
+% \end{longtable}
+% \end{center}
+%
+% \begin{macro}{\hit@def@fontsize}
+% 根据习惯定义字号。用法：
+%
+% \cs{hit@def@fontsize}\marg{字号名称}\marg{磅数}
+%
+% 避免了字号选择和行距的紧耦合。所有字号定义时为单倍行距，并提供选项指定行距倍数。
+%    \begin{macrocode}
+\def\hit@def@fontsize#1#2{%
+  \expandafter\newcommand\csname #1\endcsname[1][1.3]{%
+    \fontsize{#2}{##1\dimexpr #2}\selectfont}}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{\chuhao}
+% \begin{macro}{\xiaochu}
+% \begin{macro}{\yihao}
+% \begin{macro}{\xiaoyi}
+% \begin{macro}{\erhao}
+% \begin{macro}{\xiaoer}
+% \begin{macro}{\sanhao}
+% \begin{macro}{\xiaosan}
+% \begin{macro}{\sihao}
+% \begin{macro}{\xiaosi}
+% \begin{macro}{\wuhao}
+% \begin{macro}{\xiaowu}
+% \begin{macro}{\liuhao}
+% \begin{macro}{\xiaoliu}
+% \begin{macro}{\qihao}
+% \begin{macro}{\bahao}
+% 一组字号定义。
+%    \begin{macrocode}
+\hit@def@fontsize{chuhao}{42bp}
+\hit@def@fontsize{xiaochu}{36bp}
+\hit@def@fontsize{yihao}{26bp}
+\hit@def@fontsize{xiaoyi}{24bp}
+\hit@def@fontsize{erhao}{22bp}
+\hit@def@fontsize{xiaoer}{18bp}
+\hit@def@fontsize{sanhao}{16bp}
+\hit@def@fontsize{xiaosan}{15bp}
+\hit@def@fontsize{sihao}{14bp}
+\hit@def@fontsize{xiaosi}{12bp}
+\hit@def@fontsize{wuhao}{10.5bp}
+\hit@def@fontsize{xiaowu}{9bp}
+\hit@def@fontsize{liuhao}{7.5bp}
+\hit@def@fontsize{xiaoliu}{6.5bp}
+\hit@def@fontsize{qihao}{5.5bp}
+\hit@def@fontsize{bahao}{5bp}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+%
+% \subsubsection{文章语言设置}
+% \label{sec:paragraphlanguage}
+%
+% 。
+%    \begin{macrocode}
+\newcommand\hit@set@chapter@names{%
+  \ctexset{
+    chapter/name   = {第,章},
+  }%
+  \def\bibname{参考文献}%
+  \def\appendixname{附录}%
+  \def\indexname{索引}%
+  \def\contentsname{目\quad 录}%
+  \def\listfigurename{插图索引}%
+  \def\listtablename{表格索引}%
+  \def\hit@list@figure@table@name{插图和附表索引}%
+  \def\hit@list@algorithm@name{算法索引}%
+  \def\listequationname{公式索引}%
+}
+\hit@set@chapter@names
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\newcommand\hit@set@names{%
+  \ctexset{
+    figurename = 图,
+    tablename  = 表,
+  }%
+  \def\hit@algorithm@name{算法}%
+  \def\hit@equation@name{公式}%
+  \def\hit@assumption@name{假设}%
+  \def\hit@definition@name{定义}%
+  \def\hit@proposition@name{命题}%
+  \def\hit@lemma@name{引理}%
+  \def\hit@theorem@name{定理}%
+  \def\hit@axiom@name{公理}%
+  \def\hit@corollary@name{推论}%
+  \def\hit@exercise@name{练习}%
+  \def\hit@example@name{例}%
+  \def\hit@remark@name{注释}%
+  \def\hit@problem@name{问题}%
+  \def\hit@conjecture@name{猜想}%
+  \def\hit@proof@name{证明}%
+  \def\hit@theorem@separator{：}%
+}
+\hit@set@names
+%    \end{macrocode}
+%
+% 带圈数字和星号使用中文字体。
+%    \begin{macrocode}
+\xeCJKDeclareCharClass{CJK}{"2460 -> "2473}
+\xeCJKDeclareCharClass{CJK}{"2605}
+%    \end{macrocode}
+%
+% \newcommand\unicodechar[1]{U+#1（\symbol{"#1}）}
+% 由于 Unicode 的一些标点符号是中西文混用的：
+% \unicodechar{00B7}、
+% \unicodechar{2013}、
+% \unicodechar{2014}、
+% \unicodechar{2018}、
+% \unicodechar{2019}、
+% \unicodechar{201C}、
+% \unicodechar{201D}、
+% \unicodechar{2025}、
+% \unicodechar{2026}、
+% \unicodechar{2E3A}，
+% 所以要根据语言设置正确的字体。
+% \footnote{\url{https://github.com/CTeX-org/ctex-kit/issues/389}}
+% 此外切换语言时，有一部分名称是需要被重新定义的。
+%    \begin{macrocode}
+\newcommand\hit@set@punctuations{%
+  \xeCJKDeclareCharClass{FullLeft}{"2018, "201C}%
+  \xeCJKDeclareCharClass{FullRight}{
+    "00B7, "2019, "201D, "2013, "2014, "2025, "2026, "2E3A,
+  }%
+}
+\hit@set@punctuations
+%    \end{macrocode}
+%
+% \subsubsection{页眉页脚}
+% \label{sec:headerfooter}
+%
+% \pkg{fancyhdr} 定义页眉页脚很方便，但是有一个非常隐蔽的坑。
+% 第一次调用 \pkg{fancyhdr} 定义的样式时会修改 \cs{chaptermark}，
+% 这会导致页眉信息错误（多余章号并且英文大写）。
+% 这是因为在 \cs{ps@fancy} 中对 \cs{chaptermark} 进行重定义，
+% 所以我们先调用 \cs{ps@fancy}，再修改 \cs{chaptermark}。
+%    \begin{macrocode}
+\pagestyle{fancy}
+%    \end{macrocode}
+%
+% 定义页眉和页脚。
+% 页眉宋体五号字，居中书写；
+% 页码五号 Times New Roman ，位于页面底端，居中书写。
+%
+%    \begin{macrocode}
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \renewcommand\footrulewidth{0pt}%
+    \renewcommand\headrulewidth{0.75bp}%
+    \fancyhead[C]{%
+      \wuhao
+      \leftmark
+      }%
+    \fancyfoot[C]{\wuhao\thepage}%
+    \let\@mkboth\markboth
+    \def\chaptermark##1{%
+      \markboth{\CTEXifname{\CTEXthechapter\quad}{}##1}{}%
+    }%
+  \let\sectionmark\@gobble
+}
+\pagestyle{plain}
+%    \end{macrocode}
+%
+% \cs{chapter} 会调用特殊的 page style。
+%    \begin{macrocode}
+\ctexset{chapter/pagestyle = plain}
+%    \end{macrocode}
+%
+%
+% \subsubsection{段落}
+% \label{sec:paragraph}
+%
+% 全文首行缩进 2 字符，标点符号用全角
+%    \begin{macrocode}
+\ctexset{%
+  punct=quanjiao,
+  space=auto,
+}
+\newcommand\hit@set@indent{%
+    \ctexset{autoindent=2}%
+}
+\hit@set@indent
+%    \end{macrocode}
+%
+% 设置 url 样式，与上下文一致
+%    \begin{macrocode}
+\urlstyle{same}
+%    \end{macrocode}
+%
+% 使用 \pkg{xurl} 的方法，增加 URL 可断行的位置。
+%    \begin{macrocode}
+\g@addto@macro\UrlBreaks{%
+  \do0\do1\do2\do3\do4\do5\do6\do7\do8\do9%
+  \do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M
+  \do\N\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X\do\Y\do\Z
+  \do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m
+  \do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z
+}
+\Urlmuskip=0mu plus 0.1mu
+%    \end{macrocode}
+%
+% 取消列表的间距，以符合中文习惯。
+%    \begin{macrocode}
+\partopsep=\z@skip
+\def\@listi{\leftmargin\leftmargini
+            \parsep \z@skip
+            \topsep \z@skip
+            \itemsep\z@skip}
+\let\@listI\@listi
+\@listi
+\def\@listii {\leftmargin\leftmarginii
+              \labelwidth\leftmarginii
+              \advance\labelwidth-\labelsep
+              \topsep    \z@skip
+              \parsep    \z@skip
+              \itemsep   \z@skip}
+\def\@listiii{\leftmargin\leftmarginiii
+              \labelwidth\leftmarginiii
+              \advance\labelwidth-\labelsep
+              \topsep    \z@skip
+              \parsep    \z@skip
+              \partopsep \z@skip
+              \itemsep   \z@skip}
+%    \end{macrocode}
+%
+% 使用 \pkg{enumitem} 命令调整默认列表环境间的距离，
+%    \begin{macrocode}
+\setlist{nosep}
+%    \end{macrocode}
+%
+%
+% \subsubsection{脚注}
+% \label{sec:footnote}
+% 脚注内容采用小五号字，中文用宋体，英文和数字用 Times New Roman 体按两端对齐格式书写，
+% 单倍行距，段前段后均空 0 磅。
+% 脚注的序号按页编排，不同页的脚注序号不需要连续。
+%
+% 脚注处序号“1，……，10”的字体是“正文”，不是“上标”，序号与脚注内容文字之间空半个汉字符，
+% 脚注的段落格式为：单倍行距，段前空 0 磅，段后空 0 磅，悬挂缩进 1.5 字符；
+% 字号为小五号字，汉字用宋体，外文用 Times New Roman 体。
+%
+% 脚注序号使用带圈数字。
+% \begin{macro}{\hit@circled}
+% 生成带圈的脚注数字，最多处理到 10。
+%    \begin{macrocode}
+\newcommand\hit@circled[1]{%
+  \ifnum#1 >10\relax
+    \hit@error{%
+      Too many footnotes in this page.
+      Keep footnote less than 10%
+    }%
+  \fi
+  {\symbol{\the\numexpr#1+"245F\relax}}%
+}
+\renewcommand{\thefootnote}{\hit@circled{\c@footnote}}
+\renewcommand{\thempfootnote}{\hit@circled{\c@mpfootnote}}
+%    \end{macrocode}
+% \end{macro}
+%
+% 定义脚注分割线，字号（宋体小五），以及悬挂缩进（1.5字符）。
+%    \begin{macrocode}
+\def\footnoterule{\vskip-3\p@\hrule\@width0.3\textwidth\@height0.4\p@\vskip2.6\p@}
+\footnotemargin=13.5bp
+%    \end{macrocode}
+%
+% 修改 \pkg{footmisc} 定义的脚注格式。
+%    \begin{macrocode}
+\long\def\@makefntext#1{%
+  \begingroup
+    % 序号取消上标
+    \def\@makefnmark{\hbox{\normalfont\@thefnmark}}%
+    \xiaowu
+    \ifFN@hangfoot
+      \bgroup
+      \setbox\@tempboxa\hbox{%
+        \ifdim\footnotemargin>\z@
+          \hb@xt@\footnotemargin{\@makefnmark\hss}%
+        \else
+          \@makefnmark
+        \fi
+      }%
+      \leftmargin\wd\@tempboxa
+      \rightmargin\z@
+      \linewidth \columnwidth
+      \advance \linewidth -\leftmargin
+      \parshape \@ne \leftmargin \linewidth
+      % \footnotesize
+      \xiaowu
+      \@setpar{{\@@par}}%
+      \leavevmode
+      \llap{\box\@tempboxa}%
+      \parskip\hangfootparskip\relax
+      \parindent\hangfootparindent\relax
+    \else
+      \parindent1em%
+      \noindent
+      \ifdim\footnotemargin>\z@
+        \hb@xt@ \footnotemargin{\hss\@makefnmark}%
+      \else
+        \ifdim\footnotemargin=\z@
+          \llap{\@makefnmark}%
+        \else
+          \llap{\hb@xt@ -\footnotemargin{\@makefnmark\hss}}%
+        \fi
+      \fi
+    \fi
+    \footnotelayout#1%
+    \ifFN@hangfoot
+      \par\egroup
+    \fi
+  \endgroup
+}
+%    \end{macrocode}
+%
+%
+% \subsubsection{摘要}
+% \label{sec:abstractformat}
+%	摘要两个字设置为 3 号.
+%	定义摘要环境
+%
+% \begin{macro}{\hit@clist@use}
+% 不同论文格式关键词之间的分割不太相同，我们用 \option{keywords} 
+% 来收集关键词列表，然后用本命令来生成符合要求的格式，
+% 类似于 \LaTeX3 的 \cs{clist\_use:Nn}。
+%    \begin{macrocode}
+\hit@define@key{
+  keywords,
+}
+\newcommand\hit@clist@use[2]{%
+  \def\hit@@tmp{}%
+  \def\hit@clist@processor##1{%
+    \ifx\hit@@tmp\@empty
+      \def\hit@@tmp{#2}%
+    \else
+      #2%
+    \fi
+    ##1%
+  }%
+  \expandafter\comma@parse\expandafter{#1}{\hit@clist@processor}%
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{environment}{abstract}
+% 中文摘要部分的标题为“\textbf{摘要}”，用黑体三号字。
+% 摘要内容用小四号字书写，两端对齐，汉字用宋体，外文字用 Times New Roman 体，
+% 标点符号一律用中文输入状态下的标点符号。
+%    \begin{macrocode}
+\newenvironment{abstract}{%
+  \cleardoublepage
+  \hitsetup{language = chinese}%
+    \begingroup
+      \hit@chapter*{\hit@abstract@name}%
+    \endgroup
+}{%
+%    \end{macrocode}
+%
+% 每个关键词之间空两个汉字符宽度， 且为悬挂缩进。
+%    \begin{macrocode}
+  \par
+  \null\par
+    \textbf{关键词：}%
+  \hit@clist@use{\hit@keywords}{；}%
+    \cleardoublepage
+}
+%    \end{macrocode}
+% \end{environment}
+%
+% 
+% \subsection{数学环境、定理设置}
+% \label{sec:mathenv}
+%
+% \begin{macro}{\bm}
+% \begin{macro}{\boldsymbol}
+% 兼容旧的粗体命令：\pkg{bm} 的 \cs{bm} 和 \pkg{amsmath} 的 \cs{boldsymbol}。
+%    \begin{macrocode}
+\DeclareRobustCommand\bm[1]{{\symbf{#1}}}
+\DeclareRobustCommand\boldsymbol[1]{{\symbf{#1}}}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\square}
+% 兼容 \pkg{amssymb} 中的命令。
+%    \begin{macrocode}
+\newcommand\square{\mdlgwhtsquare}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\checkmark}
+% 允许在文本模式中使用 \cs{checkmark}。
+%    \begin{macrocode}
+\AtBeginDocument{%
+  \renewcommand\checkmark{\ensuremath{✓}}%
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% 允许太长的公式断行、分页等。
+%    \begin{macrocode}
+\allowdisplaybreaks[4]
+%    \end{macrocode}
+%
+% \subsubsection{浮动对象：插图和表格}
+% \label{sec:float}
+%
+% 图表浮动体的默认位置设为 |h|。
+%    \begin{macrocode}
+\def\fps@figure{h}
+\def\fps@table{h}
+%    \end{macrocode}
+%
+% 设置浮动对象和文字之间的距离
+%    \begin{macrocode}
+\setlength{\floatsep}{6bp}
+\setlength{\textfloatsep}{6bp}
+\setlength{\intextsep}{6bp}
+\setlength{\@fptop}{0bp \@plus1.0fil}
+\setlength{\@fpsep}{12bp \@plus2.0fil}
+\setlength{\@fpbot}{0bp \@plus1.0fil}
+%    \end{macrocode}
+%
+% 下面这组命令使浮动对象的缺省值稍微宽松一点，从而防止幅度对象占据过多的文本页面，
+% 也可以防止在很大空白的浮动页上放置很小的图形。
+%    \begin{macrocode}
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.65}
+\renewcommand{\floatpagefraction}{0.60}
+%    \end{macrocode}
+%
+% 允许用户设置图表编号的连接符。
+%    \begin{macrocode}
+\hit@define@key{
+  figure-number-separator = {
+    name    = figure@number@separator,
+    default = {.},
+  },
+  table-number-separator = {
+    name    = table@number@separator,
+    default = {.},
+  },
+  equation-number-separator = {
+    name    = equation@number@separator,
+    default = {.},
+  },
+  number-separator = {
+    name    = number@separator,
+    default = {.},
+  },
+}
+\renewcommand\thefigure{%
+  \ifnum\c@chapter>\z@
+    \thechapter
+    \hit@figure@number@separator
+  \fi
+  \@arabic\c@figure
+}
+\renewcommand\thetable{%
+  \ifnum\c@chapter>\z@
+    \thechapter
+    \hit@table@number@separator
+  \fi
+  \@arabic\c@table
+}
+\renewcommand\theequation{%
+  \ifnum\c@chapter>\z@
+    \thechapter
+    \hit@equation@number@separator
+  \fi
+  \@arabic\c@equation
+}
+\newcommand\hit@set@number@separator{%
+  \let\hit@figure@number@separator\hit@number@separator
+  \let\hit@table@number@separator\hit@number@separator
+  \let\hit@equation@number@separator\hit@number@separator
+}
+\hit@option@hook{number-separator}{\hit@set@number@separator}
+%    \end{macrocode}
+%
+%
+% 对 \pkg{longtable} 跨页表格进行相同的设置。
+%    \begin{macrocode}
+\AtEndOfPackageFile*{longtable}{
+  \AtBeginEnvironment{longtable}{%
+  \fontsize{11bp}{20.3bp}\selectfont
+  }
+}
+%    \end{macrocode}
+%
+% 定制浮动图形和表格标题样式，以及改变附录中浮动体的编号规则：
+% \begin{itemize}
+%   \item 图表标题字体为 11pt
+%   \item 去掉图表号后面的冒号，图序与图名文字之间空一个汉字符宽度
+%   \item 图：caption 在下，段前空 6 磅，段后空 12 磅
+%   \item 表：caption 在上，段前空 12 磅，段后空 6 磅
+% \end{itemize}
+%    \begin{macrocode}
+\DeclareCaptionFont{hit}{%
+  \fontsize{11bp}{15bp}\selectfont
+}
+\captionsetup{
+  font           = hit,
+  labelsep       = quad,
+  aboveskip      = 6bp,
+  belowskip      = 6bp,
+  figureposition = bottom,
+  tableposition  = top,
+}
+\captionsetup[sub]{font=hit}
+\renewcommand{\thesubfigure}{(\alph{subfigure})}
+\renewcommand{\thesubtable}{(\alph{subtable})}
+% \renewcommand{\p@subfigure}{:}
+%    \end{macrocode}
+%
+% 研究生和本科生都推荐使用三线表，并且要求表的上、下边线为单直线，线粗为 1.5 磅；
+% 第三条线为单直线，线粗为 1 磅。
+% 这里设置 \pkg{booktabs} 线粗的默认值。
+%    \begin{macrocode}
+\heavyrulewidth=1.5bp
+\lightrulewidth=1bp
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\AtEndOfPackageFile*{threeparttable}{
+  \g@addto@macro\TPT@defaults{\wuhao}
+}
+%    \end{macrocode}
+%
+% \subsubsection{章节标题}
+% \label{sec:theor}
+%    \begin{macrocode}
+\newcommand{\hit@abstract@name}{摘 \quad 要}
+\newcommand{\hit@abstract@name@en}{Abstract}
+%    \end{macrocode}
+%
+% 各级标题格式设置。
+%    \begin{macrocode}
+\ctexset{%
+  chapter = {
+    nameformat   = {},
+    numberformat = {},
+    titleformat  = {},
+    fixskip      = true,
+    afterindent  = true,
+    lofskip      = 0pt,
+    lotskip      = 0pt,
+  },
+  section = {
+    afterindent  = true,
+  },
+  subsection = {
+    afterindent  = true,
+  },
+  subsubsection = {
+    afterindent  = true,
+  },
+  paragraph/afterindent = true,
+  subparagraph/afterindent = true,
+}
+%    \end{macrocode}
+%
+% 本模板设置：
+% \begin{center}
+%   \begin{tabular}{lclll}
+%     \toprule
+%     标题        & 中文       & 英文       & 段前/后间距 & 行距 \\
+%     \midrule
+%     一级节标题  & 黑体小三号 & Arial 15pt & 30/20 pt    & 20pt \\
+%     二级节标题  & 黑体四号   & Arial 14pt & 25/12 pt    & 18pt \\
+%     三级节标题  & 黑体小四号 & Arial 13pt & 12/6 pt     & 15pt \\
+%     四级节标题  & 黑体小四号 & Arial 12pt & 12/6 pt     &      \\
+%     \bottomrule
+%   \end{tabular}
+% \end{center}
+%
+% 这里三级节标题的“中文黑体小四号”取 13pt。
+%    \begin{macrocode}
+\newcommand\hit@set@section@format{%
+    \ctexset{%
+      chapter = {
+        format     = \centering\sffamily\fontsize{15bp}{20bp}\selectfont,
+        beforeskip = 30bp,
+        afterskip  = 20bp,
+        aftername  = \quad,
+      },
+      section = {
+        format     = \sffamily\fontsize{14bp}{18bp}\selectfont,
+        beforeskip = 25bp,
+        afterskip  = 12bp,
+        aftername  = \quad,
+      },
+      subsection = {
+        format     = \sffamily\fontsize{13bp}{15bp}\selectfont,
+        beforeskip = 12bp,
+        afterskip  = 6bp,
+        aftername  = \quad,
+      },
+      subsubsection = {
+        format     = \sffamily\fontsize{12bp}{14bp}\selectfont,
+        beforeskip = 12bp,
+        afterskip  = 6bp,
+        aftername  = \quad,
+      },
+    }%
+    \ctexset{chapter/number = \thechapter}%
+}
+\hit@set@section@format
+%    \end{macrocode}
+%
+% \begin{macro}{\hit@chapter*}
+% 模板定义所有的章都出现在目录里，比如摘要、Abstract、主要符号表等。
+%
+%    \begin{macrocode}
+\newcommand\hit@pdfbookmark[2]{}
+\newcommand\hit@phantomsection{}
+\NewDocumentCommand\hit@chapter{s o m o}{%
+  \IfBooleanF{#1}{%
+    \hit@error{You have to use the star form: \string\hit@chapter*}%
+  }%
+  \if@openright\cleardoublepage\else\clearpage\fi%
+  \IfValueTF{#2}{%
+    \ifthenelse{\equal{#2}{}}{%
+      \hit@pdfbookmark{0}{#3}%
+    }{%
+      \hit@phantomsection
+      \addcontentsline{toc}{chapter}{#2}%
+    }%
+  }{%
+    \hit@phantomsection
+    \addcontentsline{toc}{chapter}{#3}%
+  }%
+  \ctexset{chapter/beforeskip=40bp}
+  \chapter*{#3}%
+  \ctexset{chapter/beforeskip=30bp}
+  \IfValueTF{#4}{%
+    \ifthenelse{\equal{#4}{}}{%
+      \@mkboth{}{}%
+    }{%
+      \@mkboth{#4}{#4}%
+    }%
+  }{%
+    \@mkboth{#3}{#3}%
+  }%
+}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \subsubsection{目录}
+% \label{sec:toc}
+% 最多 4 层，即: x.x.x.x，对应的命令和层序号分别是：
+% \cs{chapter}(0), \cs{section}(1), \cs{subsection}(2), \cs{subsubsection}(3)。
+%    \begin{macrocode}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+%    \end{macrocode}
+%
+% \begin{macro}{\tableofcontents}
+% 目录生成命令。
+%    \begin{macrocode}
+\renewcommand\tableofcontents{%
+  \hit@chapter*[]{\contentsname}%
+  \@starttoc{toc}%
+}
+\hit@define@key{
+  toc-chapter-style = {
+    name = toc@chapter@style,
+    choices = {
+      arial,
+      times,
+    },
+    default = arial,
+  },
+}
+\newcommand\hit@leaders{\titlerule*[4bp]{.}}
+\newcommand\hit@set@toc@format{%
+  \contentsmargin{\z@}%
+%    \end{macrocode}
+%
+% 目录从第 1 章开始，每章标题用黑体小四号字，行间距为 20pt，
+% 行前空 6pt，行后空 0pt。
+% 其它级节标题用宋体小四字，行间距为 20pt。
+%
+% 注意示例中章标题的字母和数字是衬线体，所以这里用 \cs{heiti}。
+% 示例中的一级和二级节标题分别缩进 1 和 1.5 个汉字符。
+%    \begin{macrocode}
+\titlecontents{chapter}
+  [\z@]{\addvspace{6bp}
+    \ifhit@toc@chapter@style@arial
+      \sffamily
+    \else
+      \heiti
+    \fi
+  }
+  {\contentspush{\thecontentslabel\quad}}{}
+  {\rmfamily\hit@leaders\thecontentspage}%
+\titlecontents{section}
+  [1em]{}
+  {\contentspush{\thecontentslabel\quad}}{}
+  {\hit@leaders\thecontentspage}%
+\titlecontents{subsection}
+  [1.5em]{}
+  {\contentspush{\thecontentslabel\quad}}{}
+  {\hit@leaders\thecontentspage}%
+}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\hit@set@toc@format
+%    \end{macrocode}
+% \end{macro}
+%
+%
+%
+%  \subsection{参考文献环境设置}
+%  \label{sec:bib}
+%
+%	重定义参考文献环境
+%    \begin{macrocode}
+\renewenvironment{thebibliography}[1]
+  {\section*{\refname}%
+    \@mkboth{\MakeUppercase\refname}{\MakeUppercase\refname}%
+      \list{\@biblabel{\@arabic\c@enumiv}}%
+           {\settowidth\labelwidth{\@biblabel{#1}}%
+            \leftmargin\labelwidth
+            \advance\leftmargin\labelsep
+            \@openbib@code
+            \usecounter{enumiv}%
+            \let\p@enumiv\@empty
+            \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+      \sloppy
+      \clubpenalty4000
+      \@clubpenalty \clubpenalty
+      \widowpenalty4000%
+      \sfcode`\.\@m}
+     {\def\@noitemerr
+       {\@latex@warning{Empty `thebibliography' environment}}%
+  \endlist}	
+%    \end{macrocode}
+%
+%
+% \subsection{其他环境设置}
+% \label{sec:config}
+%
+% \subsubsection{\pkg{amsthm} 宏包}
+%
+% 定理标题使用黑体，正文使用宋体，冒号隔开。
+%    \begin{macrocode}
+\AtEndOfPackageFile*{amsthm}{%
+  \newtheoremstyle{hit}
+    {\z@}{\z@}
+    {\normalfont}{\z@}
+    {\normalfont\sffamily}{\hit@theorem@separator}
+    {0.5em}{}
+  \theoremstyle{hit}
+  \newtheorem{assumption}{\hit@assumption@name}[chapter]%
+  \newtheorem{definition}{\hit@definition@name}[chapter]%
+  \newtheorem{proposition}{\hit@proposition@name}[chapter]%
+  \newtheorem{lemma}{\hit@lemma@name}[chapter]%
+  \newtheorem{theorem}{\hit@theorem@name}[chapter]%
+  \newtheorem{axiom}{\hit@axiom@name}[chapter]%
+  \newtheorem{corollary}{\hit@corollary@name}[chapter]%
+  \newtheorem{exercise}{\hit@exercise@name}[chapter]%
+  \newtheorem{example}{\hit@example@name}[chapter]%
+  \newtheorem{remark}{\hit@remark@name}[chapter]%
+  \newtheorem{problem}{\hit@problem@name}[chapter]%
+  \newtheorem{conjecture}{\hit@conjecture@name}[chapter]%
+  \renewenvironment{proof}[1][\hit@proof@name]{\par
+    \pushQED{\qed}%
+    % \normalfont \topsep6\p@\@plus6\p@\relax
+    \normalfont \topsep\z@\relax
+    \trivlist
+    \item[\hskip\labelsep
+      %     \itshape
+      % #1\@addpunct{.}]\ignorespaces
+      \sffamily
+      #1\@addpunct{\hit@theorem@separator}]\ignorespaces
+  }{%
+    \popQED\endtrivlist\@endpefalse
+  }
+  \renewcommand\qedsymbol{\ensuremath{\QED}}
+}
+%    \end{macrocode}
+%
+% \subsubsection{\pkg{ntheorem} 宏包}
+%
+% 定理标题使用黑体，正文使用宋体，冒号隔开。
+%    \begin{macrocode}
+\AtEndOfPackageFile*{ntheorem}{%
+  \theorembodyfont{\normalfont}%
+  \theoremheaderfont{\normalfont\sffamily}%
+  \theoremsymbol{\ensuremath{\QED}}%
+  \newtheorem*{proof}{\hit@proof@name}%
+  \theoremstyle{plain}%
+  \theoremsymbol{}%
+  \theoremseparator{\hit@theorem@separator}%
+  \newtheorem{assumption}{\hit@assumption@name}[chapter]%
+  \newtheorem{definition}{\hit@definition@name}[chapter]%
+  \newtheorem{proposition}{\hit@proposition@name}[chapter]%
+  \newtheorem{lemma}{\hit@lemma@name}[chapter]%
+  \newtheorem{theorem}{\hit@theorem@name}[chapter]%
+  \newtheorem{axiom}{\hit@axiom@name}[chapter]%
+  \newtheorem{corollary}{\hit@corollary@name}[chapter]%
+  \newtheorem{exercise}{\hit@exercise@name}[chapter]%
+  \newtheorem{example}{\hit@example@name}[chapter]%
+  \newtheorem{remark}{\hit@remark@name}[chapter]%
+  \newtheorem{problem}{\hit@problem@name}[chapter]%
+  \newtheorem{conjecture}{\hit@conjecture@name}[chapter]%
+}
+%    \end{macrocode}
+%
+% \subsubsection{\pkg{algorithm} 宏包}
+%
+% 使 \env{algorithm} 和 \env{listing} 环境的名称随语言设置而改变，
+% 并使其在附录中的编号规则与图、表等一致。
+%
+% \begin{macro}{\listofalgorithm}
+% \begin{macro}{\listofalgorithm*}
+%    \begin{macrocode}
+\PassOptionsToPackage{chapter}{algorithm}
+\AtEndOfPackageFile*{algorithm}{
+  \floatname{algorithm}{\hit@algorithm@name}
+  \renewcommand\listofalgorithms{%
+    \hit@listof{algorithm}%
+  }
+  \renewcommand\listalgorithmname{\hit@list@algorithm@name}
+  \def\ext@algorithm{loa}
+  \contentsuse{algorithm}{loa}
+  \titlecontents{algorithm}
+    [\z@]{}
+    {\contentspush{\fname@algorithm~\thecontentslabel\quad}}{}
+    {\hit@leaders\thecontentspage}
+}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \subsubsection{\pkg{algorithm2e} 宏包}
+%
+%    \begin{macrocode}
+\PassOptionsToPackage{algochapter}{algorithm2e}
+\AtEndOfPackageFile*{algorithm2e}{
+  \renewcommand\algorithmcfname{\hit@algorithm@name}
+  \SetAlgoCaptionLayout{hit@caption@font}
+  \SetAlCapSty{relax}
+  \SetAlgoCaptionSeparator{\hspace*{1em}}
+  \SetAlFnt{\fontsize{11bp}{14.3bp}\selectfont}
+  \renewcommand\listofalgorithms{%
+    \hit@listof{algorithmcf}%
+  }
+  \renewcommand\listalgorithmcfname{\hit@list@algorithm@name}
+  \def\ext@algorithmcf{loa}
+  \contentsuse{algocf}{loa}
+  \titlecontents{algocf}
+    [\z@]{}
+    {\contentspush{\algorithmcfname~\thecontentslabel\quad}}{}
+    {\hit@leaders\thecontentspage}
+}
+%    \end{macrocode}
+%
+% \subsubsection{\pkg{minted} 宏包}
+%
+%    \begin{macrocode}
+\AtEndOfPackageFile*{minted}{
+  \newcommand\hit@set@listing@language{%
+    \floatname{listing}{代码}%
+  }
+  \hit@set@listing@language
+}
+%    \end{macrocode}
+%
+%
+% \subsubsection{\pkg{hyperref} 宏包}
+%
+%    \begin{macrocode}
+\AtEndOfPackageFile*{hyperref}{
+  \hypersetup{
+    linktoc            = all,
+    bookmarksnumbered  = true,
+    bookmarksopen      = true,
+    bookmarksopenlevel = 1,
+    unicode            = true,
+    psdextra           = true,
+    breaklinks         = true,
+    plainpages         = false,
+    pdfdisplaydoctitle = true,
+    hidelinks,
+  }%
+%    \end{macrocode}
+%
+% \pkg{hyperref} 与 \pkg{unicode-math} 存在一些兼容性问题，见
+% \href{https://github.com/ustctug/ustcthesis/issues/223}{%
+%   ustctug/ustcthesis\#223}，
+% \href{https://github.com/ho-tex/hyperref/pull/90}{ho-tex/hyperref\#90} 和
+% \href{https://github.com/ustctug/ustcthesis/issues/235}{%
+%   ustctug/ustcthesis/\#235}。
+%    \begin{macrocode}
+  \@ifpackagelater{hyperref}{2019/04/27}{}{%
+    \g@addto@macro\psdmapshortnames{\let\mu\textmu}
+  }%
+  \ifhit@main@language@chinese
+    \hypersetup{
+      pdflang = zh-CN,
+    }%
+  \else
+    \hypersetup{
+      pdflang = en-US,
+    }%
+  \fi
+  \AtBeginDocument{%
+    \hypersetup{
+      pdftitle    = \hit@title,
+      pdfauthor   = \hit@author,
+    }%
+    \hypersetup{
+      pdfcreator={hitreport-v1.0}}
+  }%
+}
+%    \end{macrocode}
+%
+%
+%	浮动环境设置
+% 默认情况下, \LaTeX{} 要求每页的文字至少占据 20\%,否则该页就只单独放置一个浮动环境,
+% 而这通常不是我们想要的, 我们将这个要求降低到 5\%.
+%    \begin{macrocode}
+\renewcommand*{\textfraction}{0.05}
+%    \end{macrocode}
+%	有时如果多个浮动环境连续放在一起, \LaTeX{}会将它们分在几个不同页，即使它们可在同一页放
+% 得下. 我们可以通过修改 |\topfraction| 和 |\bottomfraction| 分别设置顶端和底端的浮动环境的最大比例.
+%    \begin{macrocode}
+\renewcommand*{\topfraction}{0.9}
+\renewcommand*{\bottomfraction}{0.8}
+%    \end{macrocode}
+%	有时\LaTeX{}会把一个浮动环境单独放在一页,
+%	我们要求这个环境至少要占据 85% 才能单独放在一页.
+%	注意:  |\floatpagefraction| 的数值必须小于 |\topfraction|.
+%    \begin{macrocode}
+\renewcommand*{\floatpagefraction}{0.85}
+%    \end{macrocode}
+%	关于图片 graphicx
+% 	如果图片没有指定后缀, 依次按下列顺序搜索
+%    \begin{macrocode}
+\DeclareGraphicsExtensions{.pdf,.eps,.jpg,.png}
+%    \end{macrocode}
+%	设置图表搜索路径, 可以给图表文件夹取如下名字
+%    \begin{macrocode}
+\graphicspath{{figures/}{figure/}{pictures/}{picture/}{pic/}{pics/}{image/}{images/}}
+%    \end{macrocode}
+%	图表标题
+%    \begin{macrocode}
+\DeclareCaptionFont{song}{\songti}
+\DeclareCaptionFont{minusfour}{\zihao{-4}}
+\captionsetup[figure]{
+    format=hang,   %标题从第二行开始都有缩进, 应该和 justification=raggedright 的效果一样.
+    labelsep=quad, %分隔符是一个空格
+    font={song,minusfour,bf}, %图的字体, 宋体小四
+    position=bottom %position=bottom, 不代表标题放在下面, 标题仍放在你放\caption的位置.
+}
+\captionsetup[table]{%
+    format=hang,   % 标题从第二行开始都有缩进, 应该和 justification=raggedright 的效果一样.
+    labelsep=quad, % 分隔符是一个空格
+    font={song,minusfour,bf}, % 表的字体, 宋体小四
+    position=top % position=bottom, 不代表标题放在下面, 标题仍放在你放\caption的位置.
+}
+%    \end{macrocode}
+%
+%	列表环境设置
+%    \begin{macrocode}
+\setlist{%
+    topsep=0.3em, % 列表顶端的垂直空白
+    partopsep=0pt, % 列表环境前面紧接着一个空白行时其顶端的额外垂直空白
+    itemsep=0ex plus 0.1ex, % 列表项之间的额外垂直空白
+    parsep=0pt, % 列表项内的段落之间的垂直空白
+    leftmargin=1.5em, % 环境的左边界和列表之间的水平距离
+    rightmargin=0em, % 环境的右边界和列表之间的水平距离
+    labelsep=0.5em, % 包含标签的盒子与列表项的第一行文本之间的间隔
+    labelwidth=2em % 包含标签的盒子的正常宽度；若实际宽度更宽，则使用实际宽度。
+}
+%    \end{macrocode}
+%
+%	超链接
+%    \begin{macrocode}
+%\hypersetup{%
+%  xetex,
+%  pdfstartview=FitH,
+%  CJKbookmarks=true,
+%  bookmarksnumbered=true,
+%  bookmarksopen=true,
+%  colorlinks, % 注释掉此项则交叉引用为彩色边框(将colorlinks和pdfborder同时注释掉)
+%  pdfborder=001,   %注释掉此项则交叉引用为彩色边框
+%  allcolors=black,
+%  breaklinks=true
+%}
+%    \end{macrocode}
+%
+%	文档页眉
+%    \begin{macrocode}
+%\pagestyle{fancy}
+%\lhead{实验名称：\@expname}
+%\chead{姓名：\@name}
+%\rhead{学号：\@stuid}
+%    \end{macrocode}
+%
+%
+% \subsection{封面信息}
+% \label{sec:cover}
+% 
+%
+% 报告题目。
+%    \begin{macrocode}
+\hit@define@key{
+  title = {
+    default = {标题},
+  },
+%    \end{macrocode}
+%
+% 报告小标题
+%    \begin{macrocode}
+  expand = {
+    default = {小标题},
+  },
+%    \end{macrocode}
+%
+% 姓名、学号、指导老师。
+%    \begin{macrocode}
+  author = {
+    default = {姓名},
+  },
+  student-id = {
+    name = student@id,
+  },
+  supervisor = {
+    default = {导师姓名},
+  },
+%    \end{macrocode}
+%
+% 院系名称。
+%    \begin{macrocode}
+  department = {
+    default = {计算学部},
+  },
+%    \end{macrocode}
+%
+% 专业名称。
+%    \begin{macrocode}
+  discipline = {
+    default = {计算机科学与技术},
+  },
+%    \end{macrocode}
+%
+% 班级序号
+%  \begin{macrocode}
+  classnum = {
+    default = {1803105}
+  },
+%  \end{macrocode}
+%
+% 实验地点
+%  \begin{macrocode}
+  lablocation = {
+    default = {格物207}
+  },
+%  \end{macrocode}
+%
+% 学期
+%  \begin{macrocode}
+  term = {
+    default = {2021春}
+  },
+%  \end{macrocode}
+%
+% 报告成文日期。
+%    \begin{macrocode}
+  date = {
+    default = {\the\year-\two@digits{\month}-\two@digits{\day}},
+  }
+}
+%    \end{macrocode}
+%
+% 输出日期的给定格式：\cs{hit@format@date}\marg{format}\marg{date}，
+% 其中格式 \meta{format} 接受三个参数分别对应年、月、日，
+% \meta{date} 是 ISO 格式的日期（yyyy-mm-dd）。
+%    \begin{macrocode}
+\newcommand\hit@format@date[2]{%
+  \edef\hit@@date{#2}%
+  \def\hit@@process@date##1-##2-##3\@nil{%
+    #1{##1}{##2}{##3}%
+  }%
+  \expandafter\hit@@process@date\hit@@date\@nil
+}
+\newcommand\hit@date@zh@digit[3]{#1 年 \number#2 月 \number#3 日}
+\newcommand\hit@date@zh@digit@short[3]{#1 年 \number#2 月}
+\newcommand\hit@date@zh@short[3]{\zhdigits{#1}年\zhnumber{#2}月}
+\newcommand\hit@date@month[1]{%
+  \ifcase\number#1\or
+    January\or February\or March\or April\or May\or June\or
+    July\or August\or September\or October\or November\or December%
+  \fi
+}
+\newcommand\hit@date@en@short[3]{\hit@date@month{#2}, #1}
+%    \end{macrocode}
+%
+%
+% 下划线命令
+%    \begin{macrocode}
+\newcommand\hit@underline[2][6em]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
+\newcommand\hit@CJKunderline[2][6em]{\CJKunderline*{\hb@xt@ #1{\hss#2\hss}}}
+%    \end{macrocode}
+%
+% 
+%  封面表格信息
+%  \begin{macrocode}
+\newcommand\hit@titlepage@info{%
+  \large
+  \renewcommand{\arraystretch}{1}
+  \begin{tabular}{lp{3.5cm}<{\centering}lc}
+    \makebox[4em][s]{学\hspace{\fill}院}\hit@theorem@separator    & {\hit@department} & \hspace{1em}  \makebox[4em][s]{专\hspace{\fill}业}\hit@theorem@separator    & {\hit@discipline} \\ \cline{2-2} \cline{4-4}
+    \makebox[4em][s]{班\hspace{\fill}级}\hit@theorem@separator    & {\hit@classnum}  & \hspace{1em}  \makebox[4em][s]{学\hspace{\fill}号}\hit@theorem@separator    & {\hit@student@id} \\ \cline{2-2} \cline{4-4}
+    \makebox[4em][s]{姓\hspace{\fill}名}\hit@theorem@separator    & {\hit@author}    &\hspace{1em} \makebox[4em][s]{实验地点}\hit@theorem@separator& {\hit@lablocation} \\ \cline{2-2} \cline{4-4}
+    \makebox[4em][s]{指导老师}\hit@theorem@separator& {\hit@supervisor} &\hspace{1em} \makebox[4em][s]{学\hspace{\fill}期}\hit@theorem@separator    & {\hit@term} \\ \cline{2-2} \cline{4-4}
+  \end{tabular}
+}
+%  \end{macrocode}
+%
+%
+% 论文成文打印的日期，用三号宋体汉字，字距延伸 0.5bp，
+% 所以 \cs{CJKglue} 应该设为 1 bp。
+%    \begin{macrocode}
+\newcommand\hit@titlepage@date{%
+  \begingroup
+    \sanhao
+    \def\CJKglue{\hskip 1bp}%
+    \hit@format@date{\hit@date@zh@short}{\hit@date}\par
+  \endgroup
+}
+%    \end{macrocode}
+%
+%	生成封面，使用\cs{maketitle}命令
+%    \begin{macrocode}
+\renewcommand\maketitle{
+  \cleardoublepage
+  \pagenumbering{Alph}%
+  \hit@maketitlepage
+  \clearpage
+}
+%    \end{macrocode}
+%
+%   定义封面
+%   \begin{macrocode}
+\newcommand\hit@maketitlepage{%
+\newgeometry{
+    top        = 3.2cm,
+    bottom     = 3.2cm,
+    left       = 3.2cm,
+    right      = 3cm,
+    headheight = 0.5cm,
+    headsep    = 1.4cm,
+    footskip   = 1.45cm
+}
+  \newpage
+	  \begin{center}
+	    \begin{figure}[h]
+	  		\parbox[c]{1.7cm}{
+	  	      \includegraphics[scale=0.22]{photo/HIT.jpg} % 校徽图片
+	  		}
+	  		\parbox[c]{14cm}{
+	  		  \begin{center}
+	  			\includegraphics[scale=0.78]{photo/hitname.jpg}\\
+	  			\large \textbf{Harbin Institute of Technology} 
+	  		  \end{center}
+	  		}
+	   \end{figure}
+	 \end{center}
+	 \vspace{2cm}
+	 \begingroup
+	   \centering 
+	   \textbf{\huawenxingkai \fontsize{32}{0} \selectfont \hit@title}\\
+	 \endgroup
+	 \vspace{1.5cm}
+	 \begingroup
+	   \centering 
+	   \textbf{\heiti \fontsize{20}{0} \selectfont \hit@expand}\\
+	 \endgroup
+	 \vspace{2.2cm}
+	\parbox[h][10cm][t]{\textwidth}{\centering\hit@titlepage@info}\par
+	\begingroup
+	  \centering
+	  {\heiti  \sihao\hit@format@date{\hit@date@zh@digit}{\hit@date}\par}%
+	\endgroup
+  \thispagestyle{empty}
+  \restoregeometry
+}
+%    \end{macrocode}
+%
+%	定义附录
+%    \begin{macrocode}
+\renewcommand{\setthesection}{\appendixname\Alph{section}}
+\renewcommand\appendix{\par
+\setcounter{section}{0}%
+\setcounter{subsection}{0}%
+\gdef\thesection{\appendixname\@Alph\c@section}}
+%    \end{macrocode}
+%
+% \subsection{其它}
+% \label{sec:other}
+%
+% 借用 \cls{ltxdoc} 和 \cls{l3doc} 里面的几个命令方便写文档。
+%    \begin{macrocode}
+\DeclareRobustCommand\cs[1]{\texttt{\char`\\#1}}
+\DeclareRobustCommand\file{\nolinkurl}
+\DeclareRobustCommand\env{\textsf}
+\DeclareRobustCommand\pkg{\textsf}
+\DeclareRobustCommand\cls{\textsf}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\sloppy
+%</cls>
+%    \end{macrocode}
+%
+%
+% \iffalse
+%    \begin{macrocode}
+%<*dtx-style>
+\ProvidesPackage{dtx-style}
+\RequirePackage{hypdoc}
+\RequirePackage{ifthen}
+\RequirePackage{fontspec}[2017/01/20]
+\RequirePackage{amsmath}
+\RequirePackage{unicode-math}
+\RequirePackage[UTF8,scheme=chinese]{ctex}
+\RequirePackage[
+  top=25mm, bottom=25mm,
+  left=40mm, right=20mm,
+  headsep=3mm]{geometry}
+\RequirePackage{hologo}
+\RequirePackage{array,longtable,booktabs}
+\RequirePackage{listings}
+\RequirePackage{fancyhdr}
+\RequirePackage{xcolor}
+\RequirePackage{enumitem}
+\RequirePackage{etoolbox}
+\RequirePackage{metalogo}
+
+\unimathsetup{
+  math-style=ISO,
+  bold-style=ISO,
+}
+
+\DeclareRobustCommand\mathellipsis{\mathinner{\unicodecdots}}
+\IfFontExistsTF{XITSMath-Regular.otf}{
+  \setmathfont[
+    Extension    = .otf,
+    BoldFont     = XITSMath-Bold,
+    StylisticSet = 8,
+  ]{XITSMath-Regular}
+  \setmathfont[range={cal,bfcal},StylisticSet=1]{XITSMath-Regular.otf}
+}{
+  \setmathfont[
+    Extension    = .otf,
+    BoldFont     = *bold,
+    StylisticSet = 8,
+  ]{xits-math}
+  \setmathfont[range={cal,bfcal},StylisticSet=1]{xits-math.otf}
+}
+
+\colorlet{hit@macro}{blue!60!black}
+\colorlet{hit@env}{blue!70!black}
+\colorlet{hit@option}{purple}
+\patchcmd{\PrintMacroName}{\MacroFont}{\MacroFont\bfseries\color{hit@macro}}{}{}
+\patchcmd{\PrintDescribeMacro}{\MacroFont}{\MacroFont\bfseries\color{hit@macro}}{}{}
+\patchcmd{\PrintDescribeEnv}{\MacroFont}{\MacroFont\bfseries\color{hit@env}}{}{}
+\patchcmd{\PrintEnvName}{\MacroFont}{\MacroFont\bfseries\color{hit@env}}{}{}
+
+\def\DescribeOption{%
+  \leavevmode\@bsphack\begingroup\MakePrivateLetters%
+  \Describe@Option}
+\def\Describe@Option#1{\endgroup
+  \marginpar{\raggedleft\PrintDescribeOption{#1}}%
+  \hit@special@index{option}{#1}\@esphack\ignorespaces}
+\def\PrintDescribeOption#1{\strut \MacroFont\bfseries\sffamily\color{hit@option} #1\ }
+\def\hit@special@index#1#2{\@bsphack
+  \begingroup
+    \HD@target
+    \let\HDorg@encapchar\encapchar
+    \edef\encapchar usage{%
+      \HDorg@encapchar hdclindex{\the\c@HD@hypercount}{usage}%
+    }%
+    \index{#2\actualchar{\string\ttfamily\space#2}
+           (#1)\encapchar usage}%
+    \index{#1:\levelchar#2\actualchar
+           {\string\ttfamily\space#2}\encapchar usage}%
+  \endgroup
+  \@esphack}
+
+\lstdefinestyle{lstStyleBase}{%
+   basicstyle=\small\ttfamily,
+   aboveskip=\medskipamount,
+   belowskip=\medskipamount,
+   lineskip=0pt,
+   boxpos=c,
+   showlines=false,
+   extendedchars=true,
+   upquote=true,
+   tabsize=2,
+   showtabs=false,
+   showspaces=false,
+   showstringspaces=false,
+   numbers=none,
+   linewidth=\linewidth,
+   xleftmargin=4pt,
+   xrightmargin=0pt,
+   resetmargins=false,
+   breaklines=true,
+   breakatwhitespace=false,
+   breakindent=0pt,
+   breakautoindent=true,
+   columns=flexible,
+   keepspaces=true,
+   gobble=4,
+   framesep=3pt,
+   rulesep=1pt,
+   framerule=1pt,
+   backgroundcolor=\color{gray!5},
+   stringstyle=\color{green!40!black!100},
+   keywordstyle=\bfseries\color{blue!50!black},
+   commentstyle=\slshape\color{black!60}}
+
+\lstdefinestyle{lstStyleShell}{%
+   style=lstStyleBase,
+   frame=l,
+   rulecolor=\color{purple},
+   language=bash}
+
+\lstdefinestyle{lstStyleLaTeX}{%
+   style=lstStyleBase,
+   frame=l,
+   rulecolor=\color{violet},
+   language=[LaTeX]TeX}
+
+\lstnewenvironment{latex}{\lstset{style=lstStyleLaTeX}}{}
+\lstnewenvironment{shell}{\lstset{style=lstStyleShell}}{}
+
+\setlist{nosep}
+
+\DeclareDocumentCommand{\option}{m}{\textsf{#1}}
+\DeclareDocumentCommand{\env}{m}{\texttt{#1}}
+\DeclareDocumentCommand{\pkg}{s m}{%
+  \textsf{#2}\IfBooleanF#1{\hit@special@index{package}{#2}}}
+\DeclareDocumentCommand{\cls}{s m}{%
+  \textsf{#2}\IfBooleanF#1{\hit@special@index{package}{#2}}}
+\DeclareDocumentCommand{\file}{s m}{%
+  \nolinkurl{#2}\IfBooleanF#1{\hit@special@index{file}{#2}}}
+\newcommand{\myentry}[1]{%
+  \marginpar{\raggedleft\color{purple}\bfseries\strut #1}}
+\newcommand{\note}[2][Note]{{%
+  \color{magenta}{\bfseries #1}\emph{#2}}}
+
+\DeclareDocumentCommand{\githubuser}{m}{\href{https://github.com/#1}{@#1}}
+
+\def\thuthesis{\textsc{Thu}\-\textsc{Thesis}}
+\def\hitreport{\textsc{Hit}\-\textsc{Report}}
+\def\hithesis{\textsc{hi}\-\textsc{Thesis}}
+%</dtx-style>
+%    \end{macrocode}
+% \fi
+%
+% \Finale
+%
+\endinput
+% \iffalse
+%  Local Variables:
+%  mode: doctex
+%  TeX-master: t
+%  End:
+% \fi

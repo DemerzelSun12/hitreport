@@ -1,0 +1,45 @@
+% !TeX encoding = UTF-8
+% !TeX program = xelatex
+
+\documentclass{hitreport}
+
+
+% 报告基本配置，加载宏包等全局配置
+\input{hitsetup}
+
+
+\begin{document}
+
+% 封面
+\maketitle
+
+
+\frontmatter
+\input{data/abstract}
+
+% 目录
+\tableofcontents
+
+
+% 正文部分
+\mainmatter
+\input{data/chap01}
+\input{data/chap02}
+\input{data/chap03}
+
+
+% 其他部分
+\backmatter
+
+% 参考文献
+%\bibliography{ref/refs}  % 参考文献使用 BibTeX 编译
+% \printbibliography       % 参考文献使用 BibLaTeX 编译
+
+% 附录
+\appendix
+% \input{data/appendix-survey}       % 本科生：外文资料的调研阅读报告
+% \input{data/appendix-translation}  % 本科生：外文资料的书面翻译
+\input{data/appendix}
+
+
+\end{document}
