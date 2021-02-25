@@ -7,7 +7,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'ci skip')"
-    container: hitreport/hitreport-test-env
+    container: demerzelsun/hitreport
     steps:
     - uses: actions/checkout@v2
     - name: Install required packages
