@@ -281,11 +281,10 @@
 % \section{使用说明}
 % \label{sec:usage}
 % \subsection{示例文件}
-% 推荐从模板自带的示例文档入手，其中包括了论文写作用到的所有命令及其使用方法，只需要用自己的内容进行相应替换就可以。对于不清楚的命令可以查阅本手册。下面的例子描述了模板中章节的组织形式，来自于示例文档，具体内容可以参考模板附带的 \file{hitreport-example.tex}。
+% 推荐从模板自带的示例文档入手，其中包括了写作用到的所有命令及其使用方法，只需要用自己的内容进行相应替换就可以。对于不清楚的命令可以查阅本手册。下面的例子描述了模板中章节的组织形式，来自于示例文档，具体内容可以参考模板附带的 \file{hitreport-example.tex}。
 %
 % \subsection{选项}
 % \label{sec:option}
-% \DescribeOption{language}
 % 报告的语言是中文，暂不支持英文。
 % \DescribeOption{open}
 % 正规出版物的章节出现在奇数页，也就是右手边的页面，这就是 \option{right}，。在这种情况下，如果前一章的最后一页也是奇数，那么模板会自动生成一个纯粹的空白页。
@@ -362,7 +361,15 @@
 %
 % \label{sec:titlepage}
 % 封面信息可以通过统一设置命令 \cs{hitsetup} 设置 \emph{key=value} 形式完成；
-% 带 * 号的键通常是对应的英文。
+%
+% \subsubsection{报告校区}
+% 选择不同校区的校名。备选为harbin、shenzhen、weihai。
+% \begin{latex}
+%   \hitsetup{
+%     campus  = {harbin},
+%   }
+% \end{latex}
+%
 %
 % \subsubsection{报告主标题}
 % 中文标题。可以在标题内部使用换行|\\|。
@@ -440,7 +447,7 @@
 % 默认为当前日期，也可以自己指定，要求使用 ISO 格式。
 % \begin{latex}
 %   \hitsetup{
-%     date = {2011-07-01},
+%     date = {2021-03-01},
 %   }
 % \end{latex}
 %
@@ -784,24 +791,15 @@ Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so 
   \expandafter\g@addto@macro\csname hit@#1@@code\endcsname{#2}%
 }
 %    \end{macrocode}
-% 论文的主要语言。
+% 报告撰写的校区
 %    \begin{macrocode}
 \hit@define@key{
-  main-language = {
-    name = main@language,
+  campus = {
+    name = campus,
     choices = {
-      chinese,
-      english,
-    },
-  },
-%    \end{macrocode}
-%
-% 用于设置局部语言。
-%    \begin{macrocode}
-  language = {
-    choices = {
-      chinese,
-      english,
+      harbin,
+      shenzhen,
+      weihai,
     },
   },
 %    \end{macrocode}
@@ -936,13 +934,10 @@ Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so 
 }
 \newcommand\hit@set@geometry{%
   \geometry{
-    top        = 3.8cm,
-    bottom     = 3.2cm,
-    left       = 3.2cm,
-    right      = 3cm,
+    margin     = 3cm,
     headheight = 0.5cm,
-    headsep    = 1.4cm,
-    footskip   = 1.45cm,
+    headsep    = 0.3cm,
+    footskip   = 0.8cm,
   }%
 }
 \hit@set@geometry
@@ -1209,10 +1204,6 @@ Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so 
     }
 %    \end{macrocode}
 %
-%	页面布局
-%    \begin{macrocode}
-\renewcommand*{\baselinestretch}{1.38}
-%    \end{macrocode}
 %	修改tabular 环境, 设置表格中的行间距为正文行间距.
 %    \begin{macrocode}
 \let\hitreport@oldtabular\tabular
@@ -1514,20 +1505,9 @@ Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so 
     \DeclareRobustCommand\mathellipsis{\mathinner{\unicodeellipsis}}%
   \fi
 }
-\ifhit@main@language@chinese
-  \hitsetup{math-style=GB}%
-\else
-  \hitsetup{math-style=TeX}%
-\fi
+\hitsetup{math-style=GB}%
 \hit@set@math@style
 \hit@option@hook{math-style}{\hit@set@math@style}
-\hit@option@hook{main-language}{%
-  \ifhit@main@language@chinese
-    \hitsetup{math-style=GB}%
-  \else
-    \hitsetup{math-style=TeX}%
-  \fi
-}
 %    \end{macrocode}
 %
 %    \begin{macrocode}
@@ -1680,10 +1660,10 @@ Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so 
 %    \begin{macrocode}
 \renewcommand\normalsize{%
   \@setfontsize\normalsize{12bp}{20bp}%
-  \abovedisplayskip=6bp%
-  \abovedisplayshortskip=6bp%
-  \belowdisplayskip=\abovedisplayskip
-  \belowdisplayshortskip=\abovedisplayshortskip}
+  \abovedisplayskip 6bp%
+  \abovedisplayshortskip 6bp%
+  \belowdisplayskip 6bp
+  \belowdisplayshortskip \abovedisplayshortskip}
 
 \normalsize
 \ifx\MakeRobust\@undefined \else
@@ -1811,7 +1791,7 @@ Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so 
 % \end{macro}
 %
 %
-% \subsubsection{文章语言设置}
+% \subsubsection{文章标题设置}
 % \label{sec:paragraphlanguage}
 %
 % 。
@@ -2112,10 +2092,9 @@ Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so 
 %    \begin{macrocode}
 \newenvironment{abstract}{%
   \cleardoublepage
-  \hitsetup{language = chinese}%
-    \begingroup
-      \hit@chapter*{\hit@abstract@name}%
-    \endgroup
+  \begingroup
+    \hit@chapter*{\hit@abstract@name}%
+  \endgroup
 }{%
 %    \end{macrocode}
 %
@@ -2325,43 +2304,56 @@ Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so 
 %    \end{macrocode}
 %
 % 本模板设置：
-% \begin{center}
-%   \begin{tabular}{lclll}
-%     \toprule
-%     标题        & 中文       & 英文       & 段前/后间距 & 行距 \\
-%     \midrule
-%     一级节标题  & 黑体小三号 & Arial 15pt & 30/20 pt    & 20pt \\
-%     二级节标题  & 黑体四号   & Arial 14pt & 25/12 pt    & 18pt \\
-%     三级节标题  & 黑体小四号 & Arial 13pt & 12/6 pt     & 15pt \\
-%     四级节标题  & 黑体小四号 & Arial 12pt & 12/6 pt     &      \\
-%     \bottomrule
-%   \end{tabular}
-% \end{center}
+% \begin{itemize}
+%   \item 各章标题，例如：“\textsf{第 1 章 引言}”。
+%
+%     章序号与章名之间空一个汉字符。
+%     采用黑体三号字，居中书写，单倍行距，
+%     段前空 24 磅，段后空 18 磅。
+%
+%   \item 一级节标题，例如：“\textsf{2.1 实验装置与实验方法}”。
+%
+%     节标题序号与标题名之间空一个汉字符（下同）。
+%     采用黑体四号（14pt）字居左书写，行距为固定值 20 磅，
+%     段前空 24 磅，段后空 6 磅。
+%
+%   \item 二级节标题，例如：“\textsf{2.1.1 实验装置}”。
+%
+%     采用黑体 13pt 字居左书写，行距为固定值 20 磅，
+%     段前空 12 磅，段后空 6 磅。
+%
+%   \item 三级节标题，例如：“\textsf{2.1.2.1 归纳法}”。
+%
+%     采用黑体小四号（12pt）字居左书写，行距为固定值 20 磅，
+%     段前空 12 磅，段后空 6 磅。
+% \end{itemize}
 %
 % 这里三级节标题的“中文黑体小四号”取 13pt。
 %    \begin{macrocode}
 \newcommand\hit@set@section@format{%
     \ctexset{%
       chapter = {
-        format     = \centering\sffamily\fontsize{15bp}{20bp}\selectfont,
-        beforeskip = 30bp,
-        afterskip  = 20bp,
+        format     = \centering\sffamily\sanhao,
+        nameformat  = {},
+        titleformat = {},
+        beforeskip = 27bp,
+        afterskip  = 27bp,
         aftername  = \quad,
       },
       section = {
-        format     = \sffamily\fontsize{14bp}{18bp}\selectfont,
-        beforeskip = 25bp,
-        afterskip  = 12bp,
+        format     = \sffamily\fontsize{14bp}{20bp}\selectfont,
+        beforeskip = 24bp,
+        afterskip  = 6bp,
         aftername  = \quad,
       },
       subsection = {
-        format     = \sffamily\fontsize{13bp}{15bp}\selectfont,
+        format     = \sffamily\fontsize{13bp}{20bp}\selectfont,
         beforeskip = 12bp,
         afterskip  = 6bp,
         aftername  = \quad,
       },
       subsubsection = {
-        format     = \sffamily\fontsize{12bp}{14bp}\selectfont,
+        format     = \sffamily\fontsize{12bp}{20bp}\selectfont,
         beforeskip = 12bp,
         afterskip  = 6bp,
         aftername  = \quad,
@@ -2450,13 +2442,7 @@ Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so 
 % 示例中的一级和二级节标题分别缩进 1 和 1.5 个汉字符。
 %    \begin{macrocode}
 \titlecontents{chapter}
-  [\z@]{\addvspace{6bp}
-    \ifhit@toc@chapter@style@arial
-      \sffamily
-    \else
-      \heiti
-    \fi
-  }
+  [\z@]{\addvspace{6bp}\sffamily}
   {\contentspush{\thecontentslabel\quad}}{}
   {\rmfamily\hit@leaders\thecontentspage}%
 \titlecontents{section}
@@ -2464,7 +2450,7 @@ Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so 
   {\contentspush{\thecontentslabel\quad}}{}
   {\hit@leaders\thecontentspage}%
 \titlecontents{subsection}
-  [1.5em]{}
+  [2em]{}
   {\contentspush{\thecontentslabel\quad}}{}
   {\hit@leaders\thecontentspage}%
 }
@@ -2663,15 +2649,9 @@ Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so 
   \@ifpackagelater{hyperref}{2019/04/27}{}{%
     \g@addto@macro\psdmapshortnames{\let\mu\textmu}
   }%
-  \ifhit@main@language@chinese
-    \hypersetup{
-      pdflang = zh-CN,
-    }%
-  \else
-    \hypersetup{
-      pdflang = en-US,
-    }%
-  \fi
+  \hypersetup{
+    pdflang = zh-CN,
+  }%
   \AtBeginDocument{%
     \hypersetup{
       pdftitle    = \hit@title,
@@ -2742,30 +2722,6 @@ Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so 
     labelwidth=2em % 包含标签的盒子的正常宽度；若实际宽度更宽，则使用实际宽度。
 }
 %    \end{macrocode}
-%
-%	超链接
-%    \begin{macrocode}
-%\hypersetup{%
-%  xetex,
-%  pdfstartview=FitH,
-%  CJKbookmarks=true,
-%  bookmarksnumbered=true,
-%  bookmarksopen=true,
-%  colorlinks, % 注释掉此项则交叉引用为彩色边框(将colorlinks和pdfborder同时注释掉)
-%  pdfborder=001,   %注释掉此项则交叉引用为彩色边框
-%  allcolors=black,
-%  breaklinks=true
-%}
-%    \end{macrocode}
-%
-%	文档页眉
-%    \begin{macrocode}
-%\pagestyle{fancy}
-%\lhead{实验名称：\@expname}
-%\chead{姓名：\@name}
-%\rhead{学号：\@stuid}
-%    \end{macrocode}
-%
 %
 % \subsection{封面信息}
 % \label{sec:cover}
@@ -2910,43 +2866,56 @@ Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so 
 }
 %    \end{macrocode}
 %
+%
+%  根据校区选择校区校徽及校名图片
+%    \begin{macrocode}
+\newcommand\hit@titlepage@fig{
+  \ifhit@campus@harbin
+    \begin{center}
+      \begin{figure}[h]
+        \includegraphics[scale=0.5]{photo/hithrb.pdf} % 本部校徽图片
+      \end{figure}
+    \end{center}
+  \else
+    \ifhit@campus@shenzhen
+      \begin{center}
+        \begin{figure}[h]
+          \includegraphics[scale=0.26]{photo/hitsz.pdf} % 深圳校区校徽图片
+        \end{figure}
+      \end{center}
+  \else 
+    \ifhit@campus@weihai
+      \begin{center}
+        \begin{figure}[h]
+          \includegraphics[scale=0.26]{photo/hitwh.pdf} % 校徽图片
+        \end{figure}
+      \end{center}
+  \fi
+  \fi
+  \fi
+}
+%    \end{macrocode}
+%
 %   定义封面
-%   \begin{macrocode}
+% \begin{macrocode}
 \newcommand\hit@maketitlepage{%
 \newgeometry{
-    top        = 3.2cm,
-    bottom     = 3.2cm,
-    left       = 3.2cm,
-    right      = 3cm,
-    headheight = 0.5cm,
-    headsep    = 1.4cm,
-    footskip   = 1.45cm
+  vmargin = 2.54cm,
+  hmargin = 3.17cm,
 }
   \newpage
-	  \begin{center}
-	    \begin{figure}[h]
-	  		\parbox[c]{1.7cm}{
-	  	      \includegraphics[scale=0.22]{photo/HIT.jpg} % 校徽图片
-	  		}
-	  		\parbox[c]{14cm}{
-	  		  \begin{center}
-	  			\includegraphics[scale=0.78]{photo/hitname.jpg}\\
-	  			\large \textbf{Harbin Institute of Technology} 
-	  		  \end{center}
-	  		}
-	   \end{figure}
-	 \end{center}
-	 \vspace{2cm}
+  \hit@titlepage@fig
+	 \vspace{1.5cm}
 	 \begingroup
 	   \centering 
 	   \textbf{\huawenxingkai \fontsize{32}{0} \selectfont \hit@title}\\
 	 \endgroup
-	 \vspace{1.5cm}
+	 \vspace{2cm}
 	 \begingroup
 	   \centering 
 	   \textbf{\heiti \fontsize{20}{0} \selectfont \hit@expand}\\
 	 \endgroup
-	 \vspace{2.2cm}
+	 \vspace{2.5cm}
 	\parbox[h][10cm][t]{\textwidth}{\centering\hit@titlepage@info}\par
 	\begingroup
 	  \centering
@@ -2955,7 +2924,7 @@ Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so 
   \thispagestyle{empty}
   \restoregeometry
 }
-%    \end{macrocode}
+% \end{macrocode}
 %
 %	定义附录
 %    \begin{macrocode}

@@ -115,17 +115,12 @@ Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so 
   \expandafter\g@addto@macro\csname hit@#1@@code\endcsname{#2}%
 }
 \hit@define@key{
-  main-language = {
-    name = main@language,
+  campus = {
+    name = campus,
     choices = {
-      chinese,
-      english,
-    },
-  },
-  language = {
-    choices = {
-      chinese,
-      english,
+      harbin,
+      shenzhen,
+      weihai,
     },
   },
   fontset = {
@@ -215,13 +210,10 @@ Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so 
 }
 \newcommand\hit@set@geometry{%
   \geometry{
-    top        = 3.8cm,
-    bottom     = 3.2cm,
-    left       = 3.2cm,
-    right      = 3cm,
+    margin     = 3cm,
     headheight = 0.5cm,
-    headsep    = 1.4cm,
-    footskip   = 1.45cm,
+    headsep    = 0.3cm,
+    footskip   = 0.8cm,
   }%
 }
 \hit@set@geometry
@@ -342,7 +334,6 @@ Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so 
     \phantomsection
     \addcontentsline{toc}{section}{\refname}
     }
-\renewcommand*{\baselinestretch}{1.38}
 \let\hitreport@oldtabular\tabular
 \let\hitreport@endoldtabular\endtabular
 \renewenvironment{tabular}%
@@ -589,20 +580,9 @@ Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so 
     \DeclareRobustCommand\mathellipsis{\mathinner{\unicodeellipsis}}%
   \fi
 }
-\ifhit@main@language@chinese
-  \hitsetup{math-style=GB}%
-\else
-  \hitsetup{math-style=TeX}%
-\fi
+\hitsetup{math-style=GB}%
 \hit@set@math@style
 \hit@option@hook{math-style}{\hit@set@math@style}
-\hit@option@hook{main-language}{%
-  \ifhit@main@language@chinese
-    \hitsetup{math-style=GB}%
-  \else
-    \hitsetup{math-style=TeX}%
-  \fi
-}
 \newcommand\hit@load@math@font@xits{%
   \hit@set@xits@names
   \setmathfont{\hit@font@name@xits@math@rm}[
@@ -735,10 +715,10 @@ Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so 
 \hit@option@hook{cjk-font}{\hit@load@cjk@font}
 \renewcommand\normalsize{%
   \@setfontsize\normalsize{12bp}{20bp}%
-  \abovedisplayskip=6bp%
-  \abovedisplayshortskip=6bp%
-  \belowdisplayskip=\abovedisplayskip
-  \belowdisplayshortskip=\abovedisplayshortskip}
+  \abovedisplayskip 6bp%
+  \abovedisplayshortskip 6bp%
+  \belowdisplayskip 6bp
+  \belowdisplayshortskip \abovedisplayshortskip}
 
 \normalsize
 \ifx\MakeRobust\@undefined \else
@@ -970,10 +950,9 @@ Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so 
 }
 \newenvironment{abstract}{%
   \cleardoublepage
-  \hitsetup{language = chinese}%
-    \begingroup
-      \hit@chapter*{\hit@abstract@name}%
-    \endgroup
+  \begingroup
+    \hit@chapter*{\hit@abstract@name}%
+  \endgroup
 }{%
   \par
   \null\par
@@ -1096,25 +1075,27 @@ Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so 
 \newcommand\hit@set@section@format{%
     \ctexset{%
       chapter = {
-        format     = \centering\sffamily\fontsize{15bp}{20bp}\selectfont,
-        beforeskip = 30bp,
-        afterskip  = 20bp,
+        format     = \centering\sffamily\sanhao,
+        nameformat  = {},
+        titleformat = {},
+        beforeskip = 27bp,
+        afterskip  = 27bp,
         aftername  = \quad,
       },
       section = {
-        format     = \sffamily\fontsize{14bp}{18bp}\selectfont,
-        beforeskip = 25bp,
-        afterskip  = 12bp,
+        format     = \sffamily\fontsize{14bp}{20bp}\selectfont,
+        beforeskip = 24bp,
+        afterskip  = 6bp,
         aftername  = \quad,
       },
       subsection = {
-        format     = \sffamily\fontsize{13bp}{15bp}\selectfont,
+        format     = \sffamily\fontsize{13bp}{20bp}\selectfont,
         beforeskip = 12bp,
         afterskip  = 6bp,
         aftername  = \quad,
       },
       subsubsection = {
-        format     = \sffamily\fontsize{12bp}{14bp}\selectfont,
+        format     = \sffamily\fontsize{12bp}{20bp}\selectfont,
         beforeskip = 12bp,
         afterskip  = 6bp,
         aftername  = \quad,
@@ -1174,13 +1155,7 @@ Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so 
 \newcommand\hit@set@toc@format{%
   \contentsmargin{\z@}%
 \titlecontents{chapter}
-  [\z@]{\addvspace{6bp}
-    \ifhit@toc@chapter@style@arial
-      \sffamily
-    \else
-      \heiti
-    \fi
-  }
+  [\z@]{\addvspace{6bp}\sffamily}
   {\contentspush{\thecontentslabel\quad}}{}
   {\rmfamily\hit@leaders\thecontentspage}%
 \titlecontents{section}
@@ -1188,7 +1163,7 @@ Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so 
   {\contentspush{\thecontentslabel\quad}}{}
   {\hit@leaders\thecontentspage}%
 \titlecontents{subsection}
-  [1.5em]{}
+  [2em]{}
   {\contentspush{\thecontentslabel\quad}}{}
   {\hit@leaders\thecontentspage}%
 }
@@ -1321,15 +1296,9 @@ Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so 
   \@ifpackagelater{hyperref}{2019/04/27}{}{%
     \g@addto@macro\psdmapshortnames{\let\mu\textmu}
   }%
-  \ifhit@main@language@chinese
-    \hypersetup{
-      pdflang = zh-CN,
-    }%
-  \else
-    \hypersetup{
-      pdflang = en-US,
-    }%
-  \fi
+  \hypersetup{
+    pdflang = zh-CN,
+  }%
   \AtBeginDocument{%
     \hypersetup{
       pdftitle    = \hit@title,
@@ -1446,41 +1415,49 @@ Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so 
   \hit@maketitlepage
   \clearpage
 }
+\newcommand\hit@titlepage@fig{
+  \ifhit@campus@harbin
+    \begin{center}
+      \begin{figure}[h]
+        \includegraphics[scale=0.5]{photo/hithrb.pdf} % 本部校徽图片
+      \end{figure}
+    \end{center}
+  \else
+    \ifhit@campus@shenzhen
+      \begin{center}
+        \begin{figure}[h]
+          \includegraphics[scale=0.26]{photo/hitsz.pdf} % 深圳校区校徽图片
+        \end{figure}
+      \end{center}
+  \else
+    \ifhit@campus@weihai
+      \begin{center}
+        \begin{figure}[h]
+          \includegraphics[scale=0.26]{photo/hitwh.pdf} % 校徽图片
+        \end{figure}
+      \end{center}
+  \fi
+  \fi
+  \fi
+}
 \newcommand\hit@maketitlepage{%
 \newgeometry{
-    top        = 3.2cm,
-    bottom     = 3.2cm,
-    left       = 3.2cm,
-    right      = 3cm,
-    headheight = 0.5cm,
-    headsep    = 1.4cm,
-    footskip   = 1.45cm
+  vmargin = 2.54cm,
+  hmargin = 3.17cm,
 }
   \newpage
-  \begin{center}
-    \begin{figure}[h]
-   \parbox[c]{1.7cm}{
-         \includegraphics[scale=0.22]{photo/HIT.jpg} % 校徽图片
-   }
-   \parbox[c]{14cm}{
-     \begin{center}
-   \includegraphics[scale=0.78]{photo/hitname.jpg}\\
-   \large \textbf{Harbin Institute of Technology}
-     \end{center}
-   }
-   \end{figure}
- \end{center}
- \vspace{2cm}
+  \hit@titlepage@fig
+ \vspace{1.5cm}
  \begingroup
    \centering
    \textbf{\huawenxingkai \fontsize{32}{0} \selectfont \hit@title}\\
  \endgroup
- \vspace{1.5cm}
+ \vspace{2cm}
  \begingroup
    \centering
    \textbf{\heiti \fontsize{20}{0} \selectfont \hit@expand}\\
  \endgroup
- \vspace{2.2cm}
+ \vspace{2.5cm}
 \parbox[h][10cm][t]{\textwidth}{\centering\hit@titlepage@info}\par
 \begingroup
   \centering

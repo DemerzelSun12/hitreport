@@ -1,0 +1,192 @@
+%%
+%% This is file `dtx-style.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% hitreport.dtx  (with options: `dtx-style')
+%% 
+%% This is a generated file.
+%% 
+%% Copyright (C) 2021 by Xiao Sun <demerzelsun@gmail.com>
+%% 
+%% This file may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3c
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in:
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3c or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%% 
+
+\newcommand\hit@error[1]{%
+  \ClassError{hitreport}{#1}{}%
+}
+\newcommand\hit@warning[1]{%
+  \ClassWarning{hitreport}{#1}%
+}
+\newcommand\hit@patch@error[1]{%
+  \hit@error{Failed to patch command \protect#1}%
+}
+\newcommand\hit@deprecate[2]{%
+  \def\hit@@tmp{#2}%
+  \hit@warning{%
+    The #1 is deprecated%
+    \ifx\hit@@tmp\@empty\else
+      . Use #2 instead%
+    \fi
+  }%
+}
+\@ifl@t@r\fmtversion{2017/04/15}{}{
+  \hit@error{%
+    TeX Live 2017 or later version is required to compile this document%
+  }
+}
+\RequirePackage{ifxetex}
+\RequireXeTeX
+\ifxetex\else
+\ClassError{hitreport}{You must use the `xelatex' driver\MessageBreak
+Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so on.}
+\fi
+\ProvidesPackage{dtx-style}
+\RequirePackage{hypdoc}
+\RequirePackage{ifthen}
+\RequirePackage{fontspec}[2017/01/20]
+\RequirePackage{amsmath}
+\RequirePackage{unicode-math}
+\RequirePackage[UTF8,scheme=chinese]{ctex}
+\RequirePackage[
+  top=25mm, bottom=25mm,
+  left=40mm, right=20mm,
+  headsep=3mm]{geometry}
+\RequirePackage{hologo}
+\RequirePackage{array,longtable,booktabs}
+\RequirePackage{listings}
+\RequirePackage{fancyhdr}
+\RequirePackage{xcolor}
+\RequirePackage{enumitem}
+\RequirePackage{etoolbox}
+\RequirePackage{metalogo}
+
+\unimathsetup{
+  math-style=ISO,
+  bold-style=ISO,
+}
+
+\DeclareRobustCommand\mathellipsis{\mathinner{\unicodecdots}}
+\IfFontExistsTF{XITSMath-Regular.otf}{
+  \setmathfont[
+    Extension    = .otf,
+    BoldFont     = XITSMath-Bold,
+    StylisticSet = 8,
+  ]{XITSMath-Regular}
+  \setmathfont[range={cal,bfcal},StylisticSet=1]{XITSMath-Regular.otf}
+}{
+  \setmathfont[
+    Extension    = .otf,
+    BoldFont     = *bold,
+    StylisticSet = 8,
+  ]{xits-math}
+  \setmathfont[range={cal,bfcal},StylisticSet=1]{xits-math.otf}
+}
+
+\colorlet{hit@macro}{blue!60!black}
+\colorlet{hit@env}{blue!70!black}
+\colorlet{hit@option}{purple}
+\patchcmd{\PrintMacroName}{\MacroFont}{\MacroFont\bfseries\color{hit@macro}}{}{}
+\patchcmd{\PrintDescribeMacro}{\MacroFont}{\MacroFont\bfseries\color{hit@macro}}{}{}
+\patchcmd{\PrintDescribeEnv}{\MacroFont}{\MacroFont\bfseries\color{hit@env}}{}{}
+\patchcmd{\PrintEnvName}{\MacroFont}{\MacroFont\bfseries\color{hit@env}}{}{}
+
+\def\DescribeOption{%
+  \leavevmode\@bsphack\begingroup\MakePrivateLetters%
+  \Describe@Option}
+\def\Describe@Option#1{\endgroup
+  \marginpar{\raggedleft\PrintDescribeOption{#1}}%
+  \hit@special@index{option}{#1}\@esphack\ignorespaces}
+\def\PrintDescribeOption#1{\strut \MacroFont\bfseries\sffamily\color{hit@option} #1\ }
+\def\hit@special@index#1#2{\@bsphack
+  \begingroup
+    \HD@target
+    \let\HDorg@encapchar\encapchar
+    \edef\encapchar usage{%
+      \HDorg@encapchar hdclindex{\the\c@HD@hypercount}{usage}%
+    }%
+    \index{#2\actualchar{\string\ttfamily\space#2}
+           (#1)\encapchar usage}%
+    \index{#1:\levelchar#2\actualchar
+           {\string\ttfamily\space#2}\encapchar usage}%
+  \endgroup
+  \@esphack}
+
+\lstdefinestyle{lstStyleBase}{%
+   basicstyle=\small\ttfamily,
+   aboveskip=\medskipamount,
+   belowskip=\medskipamount,
+   lineskip=0pt,
+   boxpos=c,
+   showlines=false,
+   extendedchars=true,
+   upquote=true,
+   tabsize=2,
+   showtabs=false,
+   showspaces=false,
+   showstringspaces=false,
+   numbers=none,
+   linewidth=\linewidth,
+   xleftmargin=4pt,
+   xrightmargin=0pt,
+   resetmargins=false,
+   breaklines=true,
+   breakatwhitespace=false,
+   breakindent=0pt,
+   breakautoindent=true,
+   columns=flexible,
+   keepspaces=true,
+   gobble=4,
+   framesep=3pt,
+   rulesep=1pt,
+   framerule=1pt,
+   backgroundcolor=\color{gray!5},
+   stringstyle=\color{green!40!black!100},
+   keywordstyle=\bfseries\color{blue!50!black},
+   commentstyle=\slshape\color{black!60}}
+
+\lstdefinestyle{lstStyleShell}{%
+   style=lstStyleBase,
+   frame=l,
+   rulecolor=\color{purple},
+   language=bash}
+
+\lstdefinestyle{lstStyleLaTeX}{%
+   style=lstStyleBase,
+   frame=l,
+   rulecolor=\color{violet},
+   language=[LaTeX]TeX}
+
+\lstnewenvironment{latex}{\lstset{style=lstStyleLaTeX}}{}
+\lstnewenvironment{shell}{\lstset{style=lstStyleShell}}{}
+
+\setlist{nosep}
+
+\DeclareDocumentCommand{\option}{m}{\textsf{#1}}
+\DeclareDocumentCommand{\env}{m}{\texttt{#1}}
+\DeclareDocumentCommand{\pkg}{s m}{%
+  \textsf{#2}\IfBooleanF#1{\hit@special@index{package}{#2}}}
+\DeclareDocumentCommand{\cls}{s m}{%
+  \textsf{#2}\IfBooleanF#1{\hit@special@index{package}{#2}}}
+\DeclareDocumentCommand{\file}{s m}{%
+  \nolinkurl{#2}\IfBooleanF#1{\hit@special@index{file}{#2}}}
+\newcommand{\myentry}[1]{%
+  \marginpar{\raggedleft\color{purple}\bfseries\strut #1}}
+\newcommand{\note}[2][Note]{{%
+  \color{magenta}{\bfseries #1}\emph{#2}}}
+
+\DeclareDocumentCommand{\githubuser}{m}{\href{https://github.com/#1}{@#1}}
+
+\def\thuthesis{\textsc{Thu}\-\textsc{Thesis}}
+\def\hitreport{\textsc{Hit}\-\textsc{Report}}
+\def\hithesis{\textsc{hi}\-\textsc{Thesis}}
+\endinput
+%%
+%% End of file `dtx-style.sty'.

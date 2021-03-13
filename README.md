@@ -1,13 +1,13 @@
-[![Actions Status](https://github.com/demerzelsun12/hitreport/workflows/Test/badge.svg)](https://github.com/demerzelsun12/hitreport/actions)
+<!-- [![Actions Status](https://github.com/demerzelsun12/hitreport/workflows/Test/badge.svg)](https://github.com/demerzelsun12/hitreport/actions)
 [![GitHub release](https://img.shields.io/github/v/release/demerzelsun12/hitreport)](https://github.com/demerzelsun12/hitreport/releases/latest)
-[![CTAN](https://img.shields.io/ctan/v/hitreport)](https://www.ctan.org/pkg/hitreport)
+[![CTAN](https://img.shields.io/ctan/v/hitreport)](https://www.ctan.org/pkg/hitreport) -->
 
 # hitreport
 
 
 # What's hitreport
 
-hitreport stands for **H**arbin **I**nstitute of **T**echnology  **Report**  LaTeX Template 的缩写。
+hitreport stands for **H**arbin **I**nstitute of **T**echnology  **Report**  LaTeX Template.
 
 hitreport是为哈尔滨工业大学一校三区本科生设计的一个免于配置的作业、实验报告模板。希望它可以使你的作业/实验报告不会因形式上的缺陷导致评分的下降。
 
