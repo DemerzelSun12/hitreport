@@ -133,7 +133,7 @@ you'll get `hitreport.cls` along with other template files.
 
 Please report your issues on Github Issues:
 
-* [Github Issues](https://github.com/demerzelsun12/hitreport/issues
+* [Github Issues](https://github.com/demerzelsun12/hitreport/issues)
 
 ## Makefile Usage
 
