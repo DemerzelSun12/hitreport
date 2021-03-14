@@ -1,19 +1,65 @@
 % !TeX root = ./hitreport-example.tex
 
-% 论文基本信息配置
+% 基本信息配置
 
 \hitsetup{
+  %******************************
+  % 注意：
+  %   1. 配置里面不要出现空行
+  %   2. 不需要的配置信息可以删除
+  %   3. 建议先阅读文档中所有关于选项的说明
+  %******************************
+  %
+  % 校区选择
+  %   可供选择为harbin, shenzhen, weihai，必须填写
   campus = {harbin},
+  %
+  % 标题
+  %   可使用“\\”命令手动控制换行
+  %
   title  = {哈尔滨工业大学报告 \LaTeX{} \\ 模板使用示例文档},
+  %
+  % 副标题
+  %   可使用“\\”命令手动控制换行
+  %
   expand = {实验一},
+  %
+  % 所在学院（部）
+  %   填写所属学院（部）的全名
+  %
   department = {计算学部},
+  %
+  % 专业
+  %   填写专业名称
+  %
   discipline  = {计算机科学与技术},
+  %
+  % 姓名
+  %
   author  = {孙骁},
+  %
+  % 学号
+  %
   student-id = {1180310840},
+  %
+  % 指导教师
+  %
   supervisor  = {XX},
+  %
+  % 实验地点
+  %   暂未区分课程报告封面与实验报告封面，课程报告可随意填写
+  %
   lablocation = {格物207},
+  %
+  % 报告学期
+  %
   term = {2021春季学期},
-%  date = {\today},
+  %
+  % 日期
+  %   使用 ISO 格式；默认为当前时间
+  %
+  % date = {2019-07-07},
+  %
 }
 
 % 载入所需的宏包
@@ -49,17 +95,7 @@
 
 % 著者-出版年制
 % \usepackage{natbib}
-% \bibliographystyle{thuthesis-author-year}
 
-% 本科生参考文献的著录格式
-% \usepackage[sort]{natbib}
-% \bibliographystyle{thuthesis-bachelor}
-
-% 参考文献使用 BibLaTeX 宏包
-% \usepackage[backend=biber,style=thuthesis-numeric]{biblatex}
-% \usepackage[backend=biber,style=thuthesis-author-year]{biblatex}
-% \usepackage[backend=biber,style=apa]{biblatex}
-% \usepackage[backend=biber,style=mla-new]{biblatex}
 % 声明 BibLaTeX 的数据库
 % \addbibresource{ref/refs.bib}
 
