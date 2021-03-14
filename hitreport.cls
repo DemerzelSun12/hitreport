@@ -239,28 +239,44 @@ Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so 
 \RequirePackage{listings}
 \RequirePackage{xcolor}
 \RequirePackage{url}
-\RequirePackage{algorithm,float}
-\RequirePackage{algpseudocode}
-\renewcommand{\algorithmicrequire}{\textbf{Input:}}  % Use Input in the format of Algorithm
-\renewcommand{\algorithmicensure}{\textbf{Output:}} % Use Output in  the format of Algorithm
-\newenvironment{breakablealgorithm}
-  {% \begin{breakablealgorithm}
-   \begin{center}
-     \refstepcounter{algorithm}% New algorithm
-     \hrule height.8pt depth0pt \kern2pt% \@fs@pre for \@fs@ruled
-     \renewcommand{\caption}[2][\relax]{% Make a new \caption
-       {\raggedright\textbf{\ALG@name~\thealgorithm} ##2\par}%
-       \ifx\relax##1\relax % #1 is \relax
-         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##2}%
-       \else % #1 is not \relax
-         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##1}%
-       \fi
-       \kern2pt\hrule\kern2pt
-     }
-  }{% \end{breakablealgorithm}
-     \kern2pt\hrule\relax% \@fs@post for \@fs@ruled
-   \end{center}
+\PassOptionsToPackage{chapter}{algorithm}
+\AtEndOfPackageFile*{algorithm}{
+  \floatname{algorithm}{\thu@algorithm@name}
+  \renewcommand\listofalgorithms{%
+    \hit@listof{algorithm}%
   }
+  \renewcommand\listalgorithmname{\hit@list@algorithm@name}
+  \def\ext@algorithm{loa}
+  \contentsuse{algorithm}{loa}
+  \titlecontents{algorithm}
+    [\z@]{}
+    {\contentspush{\fname@algorithm~\thecontentslabel\quad}}{}
+    {\hit@leaders\thecontentspage}
+}
+\PassOptionsToPackage{algochapter}{algorithm2e}
+\AtEndOfPackageFile*{algorithm2e}{
+  \renewcommand\algorithmcfname{\hit@algorithm@name}
+  \SetAlgoCaptionLayout{thu@caption@font}
+  \SetAlCapSty{relax}
+  \SetAlgoCaptionSeparator{\hspace*{1em}}
+  \SetAlFnt{\fontsize{11bp}{14.3bp}\selectfont}
+  \renewcommand\listofalgorithms{%
+    \hit@listof{algorithmcf}%
+  }
+  \renewcommand\listalgorithmcfname{\hit@list@algorithm@name}
+  \def\ext@algorithmcf{loa}
+  \contentsuse{algocf}{loa}
+  \titlecontents{algocf}
+    [\z@]{}
+    {\contentspush{\algorithmcfname~\thecontentslabel\quad}}{}
+    {\hit@leaders\thecontentspage}
+}
+\AtEndOfPackageFile*{minted}{
+  \newcommand\hit@set@listing@language{%
+    \floatname{listing}{代码}%
+  }
+  \hit@set@listing@language
+}
 \AtEndPreamble{
   \@ifpackageloaded{biblatex}{}{
     \@ifpackageloaded{apacite}{}{
