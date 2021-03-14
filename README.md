@@ -58,7 +58,7 @@ xetex hitreport.ins
 ## Makefile的用法
 
 ```shell
-make [{report|doc|clean|cleanall|distclean}]
+make [{report|doc|clean}]
 ```
 
 ### 目标

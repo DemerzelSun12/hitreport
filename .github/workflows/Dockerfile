@@ -1,5 +1,5 @@
 FROM debian:buster
-MAINTAINER Xiao Sun <demerzelsun@gmail.com>
+LABEL maintainer="Xiao Sun <demerzelsun@gmail.com>"
 
 ENV LANG=C.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
@@ -10,9 +10,11 @@ RUN apt-get update &&\
     apt-get clean -y &&\
     rm -rf /var/lib/apt/lists/*
 
-COPY install-texlive.sh install-packages.sh texlive.profile /tmp/
-RUN /tmp/install-texlive.sh
-RUN /tmp/install-packages.sh
+COPY install-texlive.sh /sources/
+COPY install-packages.sh /sources/
+COPY texlive.profile /sources/
+RUN /sources/install-texlive.sh
+RUN /sources/install-packages.sh
 
 ENV PATH="/opt/texlive/bin/x86_64-linux:${PATH}"
 CMD /bin/bash
