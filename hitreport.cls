@@ -236,7 +236,6 @@ Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so 
 \RequirePackage{threeparttable}
 \RequirePackage{bigstrut}
 \RequirePackage{bigdelim}
-\RequirePackage{cprotect}
 \RequirePackage{listings}
 \RequirePackage{xcolor}
 \RequirePackage{url}
