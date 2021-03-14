@@ -10,9 +10,9 @@ RUN apt-get update &&\
     apt-get clean -y &&\
     rm -rf /var/lib/apt/lists/*
 
-COPY install-texlive.sh /sources/
-COPY install-packages.sh /sources/
-COPY texlive.profile /sources/
+COPY ./install-texlive.sh /sources/
+COPY ./install-packages.sh /sources/
+COPY ./texlive.profile /sources/
 RUN /sources/install-texlive.sh
 RUN /sources/install-packages.sh
 
