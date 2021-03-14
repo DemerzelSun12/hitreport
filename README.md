@@ -1,6 +1,6 @@
 [![Test](https://github.com/DemerzelSun12/hitreport/actions/workflows/test.yml/badge.svg)](https://github.com/DemerzelSun12/hitreport/actions/workflows/test.yml)
-<!-- [![GitHub release](https://img.shields.io/github/v/release/demerzelsun12/hitreport)](https://github.com/demerzelsun12/hitreport/releases/latest)
-[![CTAN](https://img.shields.io/ctan/v/hitreport)](https://www.ctan.org/pkg/hitreport) -->
+[![GitHub release](https://img.shields.io/github/v/release/demerzelsun12/hitreport)](https://github.com/demerzelsun12/hitreport/releases/latest)
+<!-- [![CTAN](https://img.shields.io/ctan/v/hitreport)](https://www.ctan.org/pkg/hitreport) -->
 
 # hitreport
 
