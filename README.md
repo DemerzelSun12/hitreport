@@ -103,7 +103,6 @@ For the convenience of users who are not familiar with latex to use this templat
 
 * Published versions:
   * CTAN：in application...
-  * [Github Releases](https://github.com/demerzelsun12/hitreport/releases) :
   * [GitHub Releases](https://github.com/demerzelsun12/hitreport/releases)：One of the methods for timely release of the latest version.
   * [Gitee Releases](https://gitee.com/demerzel/hitreport/releases)：Another method for timely release of the latest version.
 
