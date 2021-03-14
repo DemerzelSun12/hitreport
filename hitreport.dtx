@@ -811,6 +811,7 @@ Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so 
       windows,
       mac,
       ubuntu,
+      fandol,
       none,
     },
     default = none,
@@ -842,6 +843,7 @@ Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so 
       windows,
       mac,
       noto,
+      fandol,
       auto,
       none,
     },
@@ -1311,11 +1313,18 @@ Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so 
       cjk-font = windows,
     }
   \else
-    \ifhit@fontset@ubuntu
+    \ifhit@fontset@fandol
       \hitsetup{
         font     = termes,
-        cjk-font = noto,
+        cjk-font = fandol,
       }
+    \else
+      \ifhit@fontset@ubuntu
+        \hitsetup{
+          font     = termes,
+          cjk-font = noto,
+        }
+      \fi
     \fi
   \fi
 \fi
@@ -1588,7 +1597,11 @@ Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so 
     \ifhit@system@windows
       \hitsetup{cjk-font = windows}
     \else
-      \hitsetup{cjk-font = noto}
+      \IfFontExistsTF{Noto Serif CJK SC}{
+        \hitsetup{cjk-font = noto}
+      }{
+        \hitsetup{cjk-font = fandol}
+      }
     \fi
   \fi
 \fi
@@ -1653,6 +1666,45 @@ Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so 
   ]%
   \setCJKfamilyfont{zhhei}{Noto Sans CJK SC}[
     BoldFont    = * Medium,
+  ]%
+  \setCJKfamilyfont{zhfs}{FandolFang}[
+    Extension   = .otf,
+    UprightFont = *-Regular,
+  ]%
+  \setCJKfamilyfont{zhkai}{FandolKai}[
+    Extension   = .otf,
+    UprightFont = *-Regular,
+  ]%
+  \setCJKfamilyfont{hwxk}{STXingkai}[
+    Extension   = .otf,
+    UprightFont = *-Regular,
+  ]%
+}
+\newcommand\hit@load@cjk@font@fandol{%
+  \setCJKmainfont{FandolSong}[
+    Extension   = .otf,
+    UprightFont = *-Regular,
+    BoldFont    = *-Bold,
+    ItalicFont  = FandolKai-Regular,
+  ]%
+  \setCJKsansfont{FandolHei}[
+    Extension   = .otf,
+    UprightFont = *-Regular,
+    BoldFont    = *-Bold,
+  ]%
+  \setCJKmonofont{FandolFang}[
+    Extension   = .otf,
+    UprightFont = *-Regular,
+  ]%
+  \setCJKfamilyfont{zhsong}{FandolSong}[
+    Extension   = .otf,
+    UprightFont = *-Regular,
+    BoldFont    = *-Bold,
+  ]%
+  \setCJKfamilyfont{zhhei}{FandolHei}[
+    Extension   = .otf,
+    UprightFont = *-Regular,
+    BoldFont    = *-Bold,
   ]%
   \setCJKfamilyfont{zhfs}{FandolFang}[
     Extension   = .otf,
