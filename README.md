@@ -25,7 +25,7 @@ hitreport是为哈尔滨工业大学一校三区本科生设计的一个免于�
 下载途径：
 
 * 发布版：
-  * CTAN：暂无，在申请中。
+  * [CTAN](https://www.ctan.org/pkg/hitreport)：CTAN发布地址，但是会比Github和Gitee版稍滞后。
   * [GitHub Releases](https://github.com/demerzelsun12/hitreport/releases)：最新版的及时发布途径之一。
   * [Gitee Releases](https://gitee.com/demerzel/hitreport/releases)：最新版的及时发布途径之二。
 
@@ -102,7 +102,7 @@ This document mainly completes almost **all** work except the main document. At 
 For the convenience of users who are not familiar with latex to use this template all versions contain source code, pre-comlied `cls` file and documentations. No warranties are provided.
 
 * Published versions:
-  * CTAN：in application...
+  * [CTAN](https://www.ctan.org/pkg/hitreport)：CTAN release address, but it will be slightly behind the Github and Gitee version。
   * [GitHub Releases](https://github.com/demerzelsun12/hitreport/releases)：One of the methods for timely release of the latest version.
   * [Gitee Releases](https://gitee.com/demerzel/hitreport/releases)：Another method for timely release of the latest version.
 
