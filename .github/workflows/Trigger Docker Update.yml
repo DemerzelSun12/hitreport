@@ -12,4 +12,4 @@ jobs:
         container: demerzelsun/hitreport-test-env
         steps:
         - name: Trigger hook
-          run: tlmgr update --reinstall-forcibly-removed --all
+          run: tlmgr update --self
