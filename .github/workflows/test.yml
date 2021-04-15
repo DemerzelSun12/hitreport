@@ -10,6 +10,8 @@ jobs:
     container: demerzelsun/hitreport-test-env
     steps:
     - uses: actions/checkout@v2
+    - name: Update tlmgr
+    - run: tlmgr update --self
     - name: Install required packages
       run: bash .github/workflows/install-packages.sh
     - name: Test report
