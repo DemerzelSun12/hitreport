@@ -75,8 +75,8 @@ make [{report|doc|clean|cleanall|distclean}]
 
 ## Contact
 
-如果你使用时发现任何 bug 或得不到的格式，可以联系我或开 issue  
-如果你有更好的作业/报告格式，欢迎添加或联系我帮忙添加  
+如果你使用时发现任何 bug 或得不到的格式，可以联系我或开 issue。
+如果你有更好的作业/报告格式，欢迎添加或联系我帮忙添加。
 
 ## License
 
